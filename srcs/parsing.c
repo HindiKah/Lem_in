@@ -12,25 +12,69 @@
 
 #include "../includes/lem_in.h"
 
+int				count_room(char **map_str)
+{
+	int i;
+	int ret;
+
+	i = 0;
+	ret = 0;
+	while (map_str[i] && !ft_strchr(map_str[i],'-'))
+	{
+		if (map_str[i][0] != '#')
+			ret++;
+		i++;
+	}
+	return (ret);
+}
+
 t_env			*init_env(t_env *e)
 {
-	char line;
+	e = (t_env*)malloc(sizeof(t_env));
+	e->ant_n = 0;
+	e->start = -1;
+	e->end = -1;
+	e->tab = NULL;
+	e->all_r = NULL;
+	return (e);
+}
 
-	init_ant_n(e, line);
-	if (ft_strstr(line, "##"))
+t_env			*fill_env(t_env *e, char **map_str)
+{
+	int i;
+
+	i = 0;
+	e = init_env(e);
+	while (map_str[i][0] == '#' && map_str[i])
+		i++;
+	e->ant_n = ft_atoi(map_str[i++]);
+	e = init_room(e, map_str + i);
+	while (!ft_strchr('-', str[i]))
+		i++;
+	init_tab(e, map_str);
+	return (e);
+}
+
+t_env			*init_room(t_env *e, char **map_str)
+{
+	int i;
+	int n_r;
+
+	i = 0;
+	n_r = 0;
+	e->nb_room = count_room(map_str);
+	e->all_r = (t_room*)malloc(sizeof(t_room) * e->nb_room);
+	while (map_str[i] && !ft_strchr(map_str[i], '-'))
 	{
-		if (ft_strstr(line, "start"))
-			init_start(e, line);
-		else if (ft_strstr(line, "line"))
-			init_end(e, line);
-	}
-	else
-		if (!ft_strchr(line, '-'))
-			init_room(e, line);
-		else
+		if (map_str[i][0] != '#')
 		{
-			init_tab(e->tab);
-			init_liaison(e, line);
+			e->all_r = init_this_room(e->all_r, map_str[i], n_r);
+			e->all_r++;
+			n_r++;
 		}
+		else
+			e = check_sharp(e, map_str + i, n_r);
+		i++;
+	}
 	return (e);
 }

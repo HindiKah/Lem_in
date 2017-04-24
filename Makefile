@@ -16,7 +16,10 @@ NAME=lem-in
 INCLUDES=./includes
 
 SRC_DIR=srcs
-SRC_BASE=main.c
+SRC_BASE=main.c\
+		 parsing.c\
+		 read_file.c\
+		 room_init.c
 
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC_BASE))
 OBJS=$(addprefix $(SRC_DIR)/, $(SRC_BASE:.c=.o))
@@ -33,14 +36,14 @@ OK=$(C_OK)OK$(C_NO)
 all: $(NAME)
 
 $(NAME): libftprintf $(OBJS)
-		$(CC) -o $(NAME) $(OBJS)
+		$(CC) -o $(NAME) $(OBJS) libftprintf_42/libftprintf.a
 		@echo "Compiling" [ $(NAME) ] $(SUCCESS)
 
 %.o: %.c $(INCLUDES)/libft.h $(INCLUDES)/ft_printf.h
 		@$(CC) -c -o $@ $< libftprintf_42/libftprintf.a -I $(INCLUDES)
 
 libftprintf:
-			make -C ./libftprintf_42 re
+			make -C ./libftprintf_42
 
 clean:
 		@rm -f $(OBJS)
@@ -49,6 +52,7 @@ clean:
 
 fclean: clean
 		@rm -f $(NAME)
+		@make -C ./libftprintf_42 fclean
 		@echo "Delete" [ $(NAME) ] $(OK)
 
 
