@@ -31,6 +31,8 @@ int					**fill_tab(t_env *e, int **tab, char **str)
 
 	j = 0;
 	i = 0;
+	while (str[i] && !ft_strchr(str[i], '-'))
+		i++;
 	while (str[i])
 	{
 		if (str[i][0] != '#')
@@ -45,15 +47,19 @@ int					ret_nb_room(t_env *e, char *str)
 	int i;
 	int j;
 
-	i = 0;
+	j = 0;
 	while (j < e->nb_room)
 	{
-		j = 0;
-		while (str[i] && str[i] == e->all_r[j].name[i])
+		i = 0;
+		while (str[i] && e->all_r[j][1][i] &&
+				str[i] == e->all_r[j][1][i])
 			i++;
-		if (str[i] == '-' || str[i] == '\0')
-			return (e->all_r[j].r_n);
-		j++;
+		if (ft_strstr(e->all_r[j][1], str))
+			return (ft_atoi(e->all_r[j][0]));
+		else if (str[i] == '-')
+			return (ft_atoi(e->all_r[j][0]));
+		else
+			j++;
 	}
 	return (-1);
 }
@@ -65,6 +71,7 @@ int					**init_this_liaison(t_env *e, int **tab, char *str)
 	i = 0;
 	while (str[i] != '-')
 		i++;
+	i++;
 	tab[ret_nb_room(e, str)][ret_nb_room(e, str + i)] = 1;
 	tab[ret_nb_room(e, str + i)][ret_nb_room(e, str)] = 1;
 	return (tab);

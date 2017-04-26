@@ -19,7 +19,8 @@ SRC_DIR=srcs
 SRC_BASE=main.c\
 		 parsing.c\
 		 read_file.c\
-		 room_init.c
+		 room_init.c\
+		 init_liaison.c
 
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC_BASE))
 OBJS=$(addprefix $(SRC_DIR)/, $(SRC_BASE:.c=.o))

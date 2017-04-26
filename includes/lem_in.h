@@ -15,26 +15,20 @@
 # include "../libftprintf_42/includes/ft_printf.h"
 # include "../libftprintf_42/includes/libft.h"
 
-typedef struct		s_room
-{
-	int				r_n;
-	char			*name;
-}					t_room;
-
 typedef struct		s_env
 {
 	int				ant_n;
 	int				nb_room;
 	int				start;
 	int				end;
-	unsigned int	**tab;
-	t_room			*all_r;
+	int				**tab;
+	char			***all_r;
 }					t_env;
 
 t_env				*fill_env(t_env *e, char **str);
 t_env				*init_env(t_env *env);
 t_env				*init_room(t_env *e, char **str);
-t_room				*init_this_room(t_room *room, char *str, int n_r);
+char				**init_this_room(char *str, int n_r);
 int					**init_tab(t_env *e, char **str);
 int					**fill_tab(t_env *e, int **tab, char **str);
 int					**init_this_liaison(t_env *e, int **tab, char *str);

@@ -49,9 +49,9 @@ t_env			*fill_env(t_env *e, char **map_str)
 		i++;
 	e->ant_n = ft_atoi(map_str[i++]);
 	e = init_room(e, map_str + i);
-	while (!ft_strchr('-', str[i]))
+	while (!ft_strchr(map_str[i], '-'))
 		i++;
-	init_tab(e, map_str);
+	e->tab = init_tab(e, map_str);
 	return (e);
 }
 
@@ -59,17 +59,19 @@ t_env			*init_room(t_env *e, char **map_str)
 {
 	int i;
 	int n_r;
+	int j;
 
+	j = 0;
 	i = 0;
 	n_r = 0;
 	e->nb_room = count_room(map_str);
-	e->all_r = (t_room*)malloc(sizeof(t_room) * e->nb_room);
+	e->all_r = (char***)malloc(sizeof(char**) * e->nb_room);
 	while (map_str[i] && !ft_strchr(map_str[i], '-'))
 	{
 		if (map_str[i][0] != '#')
 		{
-			e->all_r = init_this_room(e->all_r, map_str[i], n_r);
-			e->all_r++;
+			e->all_r[j] = init_this_room(map_str[i], n_r);
+			j++;
 			n_r++;
 		}
 		else

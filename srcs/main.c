@@ -18,14 +18,39 @@ int			main(int argc, char **argv)
 	t_env	*e;
 	char	**ret;
 
-	e = fill_env(e, save_file(ret));
+	ret = save_file(ret);
+	e = fill_env(e, ret);
 	display_map(e);
 	return (0);
 }
 
 void		display_map(t_env *e)
 {
+	int i;
+	int j;
+
+	i = 0;
 	ft_printf("\t\tMAP\n");
 	ft_printf("ant_n -> %d\nnb_room -> %d\nstart -> room n'%d'\nend -> room n'%d'\n\n", e->ant_n, e->nb_room, e->start, e->end);
+	while (i < e->nb_room)
+	{
+		ft_printf("room nb %d is called %s\n", ft_atoi(e->all_r[i][0]), e->all_r[i][1]);
+		i++;
+	}
+	i = 0;
+		ft_printf("  ");
+	while (i < e->nb_room)
+		ft_printf(" %d ", i++); 
+	i = 0;
+		ft_printf("\n");
+	while (i < e->nb_room)
+	{
+		j = 0;
+		ft_printf("%d ", i);
+		while (j < e->nb_room)
+			ft_printf(" %d ", e->tab[i][j++]);
+		ft_printf("\n");
+		i++;
+	}
 }
 

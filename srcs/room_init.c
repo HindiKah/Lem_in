@@ -1,25 +1,26 @@
 #include "../includes/lem_in.h"
 
-t_room			*init_this_room(t_room *room, char *str, int n_r)
+char			**init_this_room(char *str, int n_r)
 {
 	int i;
 	int j;
+	char **room;
 
-	i = 0;
-	j = 0;
-	room->r_n = n_r;
-	while (str[i] && str[i] <= 32)
-		i++;
-	room->name = (char*)malloc(sizeof(char) * (i + 1));
-	if (!room->name)
+	room = (char**)malloc(sizeof(char*) * 2);
+	if (!room)
 		return (NULL);
-	while (j < i && str[i])
-	{
-		room->name[j] = str[i];
+	i = 0;
+	room[0] = ft_itoabase(n_r, 10);;
+	while (str[i] && str[i] != 32)
 		i++;
+	room[1] = (char*)malloc(sizeof(char) * (i + 2));
+	j = 0;
+	while (j < i && str[j])
+	{
+		room[1][j] = str[j];
 		j++;
 	}
-	room->name[j] = '\0';
+	room[1][j] = '\0';
 	return (room);
 }
 
