@@ -20,6 +20,11 @@ int				**init_tab(t_env *e, char **str)
 			ret[i][j++] = 0;
 		i++;
 	}
+	
+
+
+
+
 	ret = fill_tab(e, ret, str);
 	return (ret);
 }
@@ -35,7 +40,7 @@ int					**fill_tab(t_env *e, int **tab, char **str)
 		i++;
 	while (str[i])
 	{
-		if (str[i][0] != '#')
+		if (str[i][0] != '#' && ft_strchr(str[i], '-'))
 			init_this_liaison(e, tab, str[i]);
 		i++;
 	}

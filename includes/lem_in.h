@@ -15,6 +15,12 @@
 # include "../libftprintf_42/includes/ft_printf.h"
 # include "../libftprintf_42/includes/libft.h"
 
+typedef struct		s_way
+{
+	char			*way;
+	int				len;
+}					t_way;
+
 typedef struct		s_env
 {
 	int				ant_n;

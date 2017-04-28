@@ -12,6 +12,7 @@
 
 #include "../includes/lem_in.h"
 void		display_map(t_env *e);
+void		print_strstr(char **str);
 
 int			main(int argc, char **argv)
 {
@@ -19,9 +20,27 @@ int			main(int argc, char **argv)
 	char	**ret;
 
 	ret = save_file(ret);
+	if (!ret)
+		return (ft_printf("ERROR ON INPUT\n"));
 	e = fill_env(e, ret);
+	//print_strstr(ret);
 	display_map(e);
+	free(e);
 	return (0);
+}
+
+void		print_strstr(char **str)
+{
+	int i;
+
+	i = 0;
+	ft_printf("\t\tFILE\n\t\t||||\n\t\tVVVV\n\n");
+	while (str[i])
+	{
+		ft_printf("\t\t%s\n", str[i]);
+		i++;
+	}
+	ft_printf("\t\tEND FILE\n\n");
 }
 
 void		display_map(t_env *e)
@@ -38,15 +57,15 @@ void		display_map(t_env *e)
 		i++;
 	}
 	i = 0;
-		ft_printf("  ");
+	ft_printf("  ");
 	while (i < e->nb_room)
-		ft_printf(" %d ", i++); 
+		ft_printf(" %s ", e->all_r[i++][1]); 
 	i = 0;
-		ft_printf("\n");
+	ft_printf("\n");
 	while (i < e->nb_room)
 	{
 		j = 0;
-		ft_printf("%d ", i);
+		ft_printf("%s ", e->all_r[i][1]);
 		while (j < e->nb_room)
 			ft_printf(" %d ", e->tab[i][j++]);
 		ft_printf("\n");
