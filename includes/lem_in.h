@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/04/19 19:01:08 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/04 16:39:27 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ typedef struct		s_node
 	char			from;
 	int				name;
 	int				ant;
-	int				node;
 	int				depth;
-	int				pass;
 	struct s_node	*previous;
-	struct s_node	*next;
+	struct s_node	**next;
 }					t_node;
 
 typedef struct		s_way
@@ -36,10 +34,11 @@ typedef struct		s_way
 typedef struct		s_env
 {
 	int				ant_n;
-	int				nb_way;
+	int				way;
 	int				nb_room;
 	int				start;
 	int				end;
+	int				*pass;
 	int				**tab;
 	char			***all_r;
 }					t_env;
@@ -55,7 +54,9 @@ t_env				*check_sharp(t_env *e, char **str, int n_r);
 char				**save_file(char **ret);
 t_node				*give_next_node(t_env *e, t_node *prev, int node);
 t_node				*map_tree_init(t_env *e);
-int					is_it_passed(int pass, int node);
+int					is_it_passed(int *pass, int node);
 int					count_neighbour(t_env *e, int node);
+int					*add_tab_value(int *tab, int n);
 
+void				print_pass(int *tab);
 #endif

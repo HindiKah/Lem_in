@@ -6,41 +6,27 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/04/19 18:57:54 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/04 17:21:33 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 void		display_map(t_env *e);
-void		print_strstr(char **str);
 
 int			main(int argc, char **argv)
 {
 	t_env	*e;
 	char	**ret;
+	t_node	*tree;
 
 	ret = save_file(ret);
 	if (!ret)
 		return (ft_printf("ERROR ON INPUT\n"));
 	e = fill_env(e, ret);
-	//print_strstr(ret);
 	display_map(e);
+	tree = map_tree_init(e);
 	free(e);
 	return (0);
-}
-
-void		print_strstr(char **str)
-{
-	int i;
-
-	i = 0;
-	ft_printf("\t\tFILE\n\t\t||||\n\t\tVVVV\n\n");
-	while (str[i])
-	{
-		ft_printf("\t\t%s\n", str[i]);
-		i++;
-	}
-	ft_printf("\t\tEND FILE\n\n");
 }
 
 void		display_map(t_env *e)
