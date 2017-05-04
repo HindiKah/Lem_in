@@ -20,11 +20,6 @@ int				**init_tab(t_env *e, char **str)
 			ret[i][j++] = 0;
 		i++;
 	}
-	
-
-
-
-
 	ret = fill_tab(e, ret, str);
 	return (ret);
 }

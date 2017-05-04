@@ -15,6 +15,18 @@
 # include "../libftprintf_42/includes/ft_printf.h"
 # include "../libftprintf_42/includes/libft.h"
 
+typedef struct		s_node
+{
+	char			from;
+	int				name;
+	int				ant;
+	int				node;
+	int				depth;
+	int				pass;
+	struct s_node	*previous;
+	struct s_node	*next;
+}					t_node;
+
 typedef struct		s_way
 {
 	char			*way;
@@ -24,6 +36,7 @@ typedef struct		s_way
 typedef struct		s_env
 {
 	int				ant_n;
+	int				nb_way;
 	int				nb_room;
 	int				start;
 	int				end;
@@ -40,5 +53,9 @@ int					**fill_tab(t_env *e, int **tab, char **str);
 int					**init_this_liaison(t_env *e, int **tab, char *str);
 t_env				*check_sharp(t_env *e, char **str, int n_r);
 char				**save_file(char **ret);
+t_node				*give_next_node(t_env *e, t_node *prev, int node);
+t_node				*map_tree_init(t_env *e);
+int					is_it_passed(int pass, int node);
+int					count_neighbour(t_env *e, int node);
 
 #endif
