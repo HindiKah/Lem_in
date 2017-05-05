@@ -1,0 +1,18 @@
+1234
+##start
+a 2 3
+b 3 4
+c 2 1
+d 2 3
+e 2 3
+f 2 3
+g 2 3
+##end
+h 2 3
+a-b
+b-c
+c-d
+d-e
+e-f
+f-g
+g-h

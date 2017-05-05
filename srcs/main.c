@@ -17,16 +17,34 @@ int			main(int argc, char **argv)
 {
 	t_env	*e;
 	char	**ret;
-	t_node	*tree;
+	t_node	**tree;
 
 	ret = save_file(ret);
 	if (!ret)
 		return (ft_printf("ERROR ON INPUT\n"));
 	e = fill_env(e, ret);
-	display_map(e);
 	tree = map_tree_init(e);
+	display_map(e);
+	display_link(tree, e);
 	free(e);
+	free(tree);
 	return (0);
+}
+void			display_link(t_node **tree, t_env *e)
+{
+int i;
+	i = 0;
+	while (i < e->nb_room)
+	{
+		ft_printf("node[%d] is link whith ", i);
+		while (*tree[i]->next)
+		{
+			ft_printf(" %d ", tree[i]->next[0]->name);
+			tree[i]->next++;
+		}
+		ft_printf("\n");
+		i++;
+	}
 }
 
 void		display_map(t_env *e)

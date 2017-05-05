@@ -17,11 +17,9 @@
 
 typedef struct		s_node
 {
-	char			from;
 	int				name;
 	int				ant;
 	int				depth;
-	struct s_node	*previous;
 	struct s_node	**next;
 }					t_node;
 
@@ -53,10 +51,14 @@ int					**init_this_liaison(t_env *e, int **tab, char *str);
 t_env				*check_sharp(t_env *e, char **str, int n_r);
 char				**save_file(char **ret);
 t_node				*give_next_node(t_env *e, t_node *prev, int node);
-t_node				*map_tree_init(t_env *e);
+t_node				**map_tree_init(t_env *e);
 int					is_it_passed(int *pass, int node);
 int					count_neighbour(t_env *e, int node);
 int					*add_tab_value(int *tab, int n);
+t_node				*init_node(t_node *node, t_env *e, int n);
+t_node				*link_node(t_node *node, t_env *e, t_node **tree);
+t_node				*search_node(t_node **node, t_env *e, int n);
 
 void				print_pass(int *tab);
+void				display_link(t_node **tree, t_env *e);
 #endif

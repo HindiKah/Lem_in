@@ -1,41 +1,71 @@
 #include "../includes/lem_in.h"
 
-t_node			*map_tree_init(t_env *e)
+t_node			**map_tree_init(t_env *e)
 {
-	t_node	*ret;
+	t_node	**tree;
 	int		i;
 
 	i = 0;
-	ft_printf(" count = %d\n", count_neighbour(e, 7));
-	ret = (t_node*)malloc(sizeof(t_node) * (count_neighbour(e, e->start) + 1));
-	e->pass = (int*)malloc(sizeof(int) * 2);
-	e->way = 0;
-	e->pass[0] = e->start;
-	e->pass[1] = -1;
-	ret->depth = 0;
-	ret->from = -1;
-	ret->previous = NULL;
-	ret->name = e->start;
-	return (ret);
+	tree = (t_node**)malloc(sizeof(t_node*) * e->nb_room);;
+	while (i < e->nb_room)
+	{
+		tree[i] = init_node(tree[i], e, i);
+		ft_printf("tree[%d].name = %d\n", i, tree[i]->name);
+		i++;
+	}
+	i = 0;
+	while (i < e->nb_room)
+	{
+		tree[i] = link_node(tree[i], e, tree);
+		i++;
+	}
+	return (tree);
 }
 
-t_node			*build_tree(t_env *e, t_node *node)
+t_node			*init_node(t_node *node, t_env *e, int n)
 {
-	t_node *start;
+	int i;
+
+	i = 0;
+	node = (t_node*)malloc(sizeof(t_node));
+	node->next = (t_node**)malloc(sizeof(t_node*) * (count_neighbour(e, i) + 1));
+	node->name = n;
+	return (node);
+}
+
+t_node			*link_node(t_node *node, t_env *e, t_node **tree)
+{
 	int i;
 	int y;
 
 	i = 0;
-	y = e->start;
-	start = node;
-	node->name = e->start;
+	y = 0;
 	while (i < e->nb_room)
 	{
-		if (e->tab[
-	node->next = 
+		if (e->tab[node->name][i])
+		{
+			node->next[y] = search_node(tree, e, i);
+			y++;
+		}
+		i++;
 	}
+	node->next[y] = NULL;
+	return (node);
+}
 
+t_node			*search_node(t_node **tree, t_env *e, int node)
+{
+	int i;
+
+	i = 0;
+	while (i < e->nb_room)
+	{
+		if (tree[i]->name == node)
+			return (tree[i]);
+		i++;
 	}
+	return (NULL);
+}
 
 int				is_it_passed(int *tab, int node)
 {
