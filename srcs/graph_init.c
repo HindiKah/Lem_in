@@ -10,7 +10,6 @@ t_node			**map_tree_init(t_env *e)
 	while (i < e->nb_room)
 	{
 		tree[i] = init_node(tree[i], e, i);
-		ft_printf("tree[%d].name = %d\n", i, tree[i]->name);
 		i++;
 	}
 	i = 0;
@@ -29,6 +28,7 @@ t_node			*init_node(t_node *node, t_env *e, int n)
 	i = 0;
 	node = (t_node*)malloc(sizeof(t_node));
 	node->next = (t_node**)malloc(sizeof(t_node*) * (count_neighbour(e, i) + 1));
+	node->passed = 0;
 	node->name = n;
 	return (node);
 }

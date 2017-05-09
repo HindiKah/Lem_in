@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/04 16:39:27 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/09 16:22:41 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct		s_node
 {
 	int				name;
+	int				passed;
 	int				ant;
 	int				depth;
 	struct s_node	**next;
@@ -25,7 +26,7 @@ typedef struct		s_node
 
 typedef struct		s_way
 {
-	char			*way;
+	int				*way;
 	int				len;
 }					t_way;
 
@@ -58,6 +59,9 @@ int					*add_tab_value(int *tab, int n);
 t_node				*init_node(t_node *node, t_env *e, int n);
 t_node				*link_node(t_node *node, t_env *e, t_node **tree);
 t_node				*search_node(t_node **node, t_env *e, int n);
+int					*search_way(t_node *start, t_env *e, int *ret);
+int					*add_end_tab(int *ret, int n);
+int					**give_way(t_node **tree, t_env *e);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);

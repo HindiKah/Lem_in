@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/04 17:21:33 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/09 16:31:14 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int			main(int argc, char **argv)
 	t_env	*e;
 	char	**ret;
 	t_node	**tree;
+	int		**ways;
 
 	ret = save_file(ret);
 	if (!ret)
@@ -25,26 +26,28 @@ int			main(int argc, char **argv)
 	e = fill_env(e, ret);
 	tree = map_tree_init(e);
 	display_map(e);
-	display_link(tree, e);
-	free(e);
-	free(tree);
+	ways = give_way(tree, e);
+	//display_link(tree, e);
 	return (0);
 }
 void			display_link(t_node **tree, t_env *e)
 {
 int i;
 	i = 0;
+	int y = 0;
 	while (i < e->nb_room)
 	{
 		ft_printf("node[%d] is link whith ", i);
-		while (*tree[i]->next)
+		y = 0;
+		while (tree[i]->next[y])
 		{
-			ft_printf(" %d ", tree[i]->next[0]->name);
-			tree[i]->next++;
+			ft_printf(" %d ", tree[i]->next[y]->name);
+			y++;
 		}
 		ft_printf("\n");
 		i++;
 	}
+	ft_printf("\n");
 }
 
 void		display_map(t_env *e)
@@ -54,12 +57,14 @@ void		display_map(t_env *e)
 
 	i = 0;
 	ft_printf("\t\tMAP\n");
+	ft_printf("\n");
 	ft_printf("ant_n -> %d\nnb_room -> %d\nstart -> room n'%d'\nend -> room n'%d'\n\n", e->ant_n, e->nb_room, e->start, e->end);
 	while (i < e->nb_room)
 	{
 		ft_printf("room nb %d is called %s\n", ft_atoi(e->all_r[i][0]), e->all_r[i][1]);
 		i++;
 	}
+	ft_printf("\n");
 	i = 0;
 	ft_printf("  ");
 	while (i < e->nb_room)
@@ -75,5 +80,6 @@ void		display_map(t_env *e)
 		ft_printf("\n");
 		i++;
 	}
+		ft_printf("\n");
 }
 
