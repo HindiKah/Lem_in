@@ -38,24 +38,24 @@ OK=$(C_OK)OK$(C_NO)
 
 all: $(NAME)
 
-$(NAME): libftprintf $(OBJS)
-		$(CC) -o $(NAME) $(OBJS) libftprintf_42/libftprintf.a
+$(NAME): libftprintf42 $(OBJS)
+		$(CC) -o $(NAME) $(OBJS) libftprintf/libftprintf.a
 		@echo "Compiling" [ $(NAME) ] $(SUCCESS)
 
 %.o: %.c $(INCLUDES)/libft.h $(INCLUDES)/ft_printf.h
-		@$(CC) -c -o $@ $< libftprintf_42/libftprintf.a -I $(INCLUDES)
+		@$(CC) -c -o $@ $< libftprintf/libftprintf.a -I $(INCLUDES)
 
-libftprintf:
-			make -C ./libftprintf_42
+libftprintf42:
+			make -C ./libftprintf
 
 clean:
 		@rm -f $(OBJS)
-		@make -C ./libftprintf_42 clean
+		@make -C ./libftprintf clean
 		@echo "Cleaning" [ $(NAME) ] "..." $(OK)
 
 fclean: clean
 		@rm -f $(NAME)
-		@make -C ./libftprintf_42 fclean
+		@make -C ./libftprintf fclean
 		@echo "Delete" [ $(NAME) ] $(OK)
 
 

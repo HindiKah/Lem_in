@@ -27,7 +27,10 @@ char			**init_this_room(char *str, int n_r)
 t_env			*check_sharp(t_env *e, char **str, int n_r)
 {
 	if (ft_strstr("##end", str[0]))
+	{
+		ft_printf("n_r = %d\n", n_r);
 		e->end = n_r;
+	}
 	else if (ft_strstr("##start", str[0]))
 		e->start = n_r;
 	return (e);

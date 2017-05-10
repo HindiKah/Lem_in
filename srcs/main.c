@@ -26,8 +26,8 @@ int			main(int argc, char **argv)
 	e = fill_env(e, ret);
 	tree = map_tree_init(e);
 	display_map(e);
+	display_link(tree, e);
 	ways = give_way(tree, e);
-	//display_link(tree, e);
 	return (0);
 }
 void			display_link(t_node **tree, t_env *e)
@@ -83,3 +83,37 @@ void		display_map(t_env *e)
 		ft_printf("\n");
 }
 
+void			print_tab(int *tab)
+{
+	int i;
+
+	i = 0;
+	ft_printf("TAB ->> \n");
+	while (tab[i] != -1)
+	{
+		ft_printf("%d ", i);
+		i++;
+	}
+	ft_printf("\n");
+	i = 0;
+	while (tab[i] != -1)
+	{
+		ft_printf("%d ", tab[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
+void			print_passed(t_node **tree, t_env *e)
+{
+	int i;
+	i = 0;
+	int y = 0;
+	while (i < e->nb_room)
+	{
+		ft_printf("node[%d] passed = %d ", i, tree[i]->passed);
+		ft_printf("\n");
+		i++;
+	}
+	ft_printf("\n");
+}

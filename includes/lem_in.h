@@ -12,8 +12,8 @@
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
-# include "../libftprintf_42/includes/ft_printf.h"
-# include "../libftprintf_42/includes/libft.h"
+# include "../libftprintf/includes/ft_printf.h"
+# include "../libftprintf/includes/libft.h"
 
 typedef struct		s_node
 {
@@ -33,6 +33,8 @@ typedef struct		s_way
 typedef struct		s_env
 {
 	int				ant_n;
+	int				way_start;
+	int				current_way;
 	int				way;
 	int				nb_room;
 	int				start;
@@ -59,10 +61,12 @@ int					*add_tab_value(int *tab, int n);
 t_node				*init_node(t_node *node, t_env *e, int n);
 t_node				*link_node(t_node *node, t_env *e, t_node **tree);
 t_node				*search_node(t_node **node, t_env *e, int n);
-int					*search_way(t_node *start, t_env *e, int *ret);
+int					*search_way(t_node **tree, t_node *start, t_env *e, int *ret);
 int					*add_end_tab(int *ret, int n);
 int					**give_way(t_node **tree, t_env *e);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);
+void				print_tab(int *tab);
+void				print_passed(t_node **tree, t_env *e);
 #endif
