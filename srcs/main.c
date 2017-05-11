@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 17:52:12 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/11 19:53:46 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			main(int argc, char **argv)
 	ways = give_way(tree, e);
 	display_map(e);
 	sleep(1);
-	//display_link(tree, e);
+	display_link(tree, e);
 	//print_way(ways);
 	sort_tab(ways);
 	print_way(ways);
@@ -63,7 +63,7 @@ void		display_map(t_env *e)
 	ft_printf("\t\tMAP\n");
 	ft_printf("\n");
 	ft_printf("ant_n -> %d\nnb_room -> %d\nstart -> room n'%d'\nend -> room n'%d'\n\n", e->ant_n, e->nb_room, e->start, e->end);
-	/*while (i < e->nb_room)
+	while (i < e->nb_room)
 	{
 		ft_printf("room nb %d is called %s\n", ft_atoi(e->all_r[i][0]), e->all_r[i][1]);
 		i++;
@@ -83,7 +83,7 @@ void		display_map(t_env *e)
 			ft_printf(" %d ", e->tab[i][j++]);
 		ft_printf("\n");
 		i++;
-	}*/
+	}
 		ft_printf("\n");
 }
 

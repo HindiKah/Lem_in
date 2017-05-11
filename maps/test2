@@ -12,6 +12,7 @@ C 4 5
 D 5 6
 E 6 7
 F 2 3
+G 3 4
 ##end
 h 2 3
 a-b
@@ -27,3 +28,5 @@ C-D
 D-E
 E-F
 F-h
+a-G
+G-h
