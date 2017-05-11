@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/09 16:22:41 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/11 16:08:07 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,17 @@ int					*add_tab_value(int *tab, int n);
 t_node				*init_node(t_node *node, t_env *e, int n);
 t_node				*link_node(t_node *node, t_env *e, t_node **tree);
 t_node				*search_node(t_node **node, t_env *e, int n);
-int					*search_way(t_node **tree, t_node *start, t_env *e, int *ret);
+int					*search_way(t_node **tree, t_node **start, t_env *e, int **ret);
 int					*add_end_tab(int *ret, int n);
 int					**give_way(t_node **tree, t_env *e);
+int					give_last_tab(int *tab);
+int					way_len(int *tab);
+void				sort_tab(int **tab);
+void				switch_tab(int **tab, int a, int b);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);
 void				print_tab(int *tab);
 void				print_passed(t_node **tree, t_env *e);
+void				print_way(int **tab);
 #endif

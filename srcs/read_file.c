@@ -8,7 +8,7 @@ char		**save_file(char **ret)
 
 	g = 0;
 	secure = 0;
-	ret = (char**)malloc(sizeof(char*) * 1000);
+	ret = (char**)malloc(sizeof(char*) * 10000000);
 	ret[secure] = ft_strdup("");
 	while ((g = read(0, buff, 1)) > 0)
 	{
@@ -18,7 +18,7 @@ char		**save_file(char **ret)
 			return (ret);
 		}
 		buff[1] = '\0';
-		if (secure > 999)
+		if (secure > 10000000)
 			return (NULL);
 		if (buff[0] == '\n')
 		{

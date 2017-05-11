@@ -6,7 +6,7 @@ t_node			**map_tree_init(t_env *e)
 	int		i;
 
 	i = 0;
-	tree = (t_node**)malloc(sizeof(t_node*) * e->nb_room);;
+	tree = (t_node**)malloc(sizeof(t_node*) * (e->nb_room + 1));
 	while (i < e->nb_room)
 	{
 		tree[i] = init_node(tree[i], e, i);
@@ -15,6 +15,7 @@ t_node			**map_tree_init(t_env *e)
 	i = 0;
 	while (i < e->nb_room)
 	{
+		tree[i]->name = i;
 		tree[i] = link_node(tree[i], e, tree);
 		i++;
 	}
@@ -23,13 +24,10 @@ t_node			**map_tree_init(t_env *e)
 
 t_node			*init_node(t_node *node, t_env *e, int n)
 {
-	int i;
-
-	i = 0;
 	node = (t_node*)malloc(sizeof(t_node));
-	node->next = (t_node**)malloc(sizeof(t_node*) * (count_neighbour(e, i) + 1));
-	node->passed = 0;
 	node->name = n;
+	node->next = (t_node**)malloc(sizeof(t_node*) * (count_neighbour(e, n) + 1));
+	node->passed = 0;
 	return (node);
 }
 
@@ -58,7 +56,7 @@ t_node			*search_node(t_node **tree, t_env *e, int node)
 	int i;
 
 	i = 0;
-	while (i < e->nb_room)
+	while (i < e->nb_room && tree[i])
 	{
 		if (tree[i]->name == node)
 			return (tree[i]);
@@ -87,14 +85,14 @@ int				count_neighbour(t_env *e, int node)
 	int ret;
 
 	i = 0;
+	ret = 0;
 	while (i < e->nb_room)
 	{
 		if (e->tab[node][i])
 			ret++;
 		i++;
 	}
-	ret--;
-	return (ret);
+	return (ret > 0 ? ret : -1);
 }
 
 int				*add_tab_value(int *tab, int n)

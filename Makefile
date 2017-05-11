@@ -6,7 +6,7 @@
 #    By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/19 18:35:20 by ybenoit           #+#    #+#              #
-#    Updated: 2017/05/09 16:03:27 by ybenoit          ###   ########.fr        #
+#    Updated: 2017/05/11 15:54:10 by ybenoit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC_BASE=main.c\
 		 room_init.c\
 		 init_liaison.c\
 		 graph_init.c\
-		 way.c
+		 way.c\
+		 tab_fun.c
 
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC_BASE))
 OBJS=$(addprefix $(SRC_DIR)/, $(SRC_BASE:.c=.o))
