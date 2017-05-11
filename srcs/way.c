@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:03:15 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 17:18:10 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/11 18:19:48 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			**give_way(t_node **tree, t_env *e)
 	e->way = 0;
 	search_node(tree, e, e->start)->passed = 1;
 	ret = (int**)malloc(sizeof(int*) * (i_way + 1));
-	while (i < 2)
+	while (i < i_way)
 	{
 		tmp = search_node(tree, e, e->start);
 		search_node(tree, e, e->end)->passed = 0;
