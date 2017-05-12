@@ -21,6 +21,8 @@ int			way_len(int *tab)
 		return (-1);
 	while (tab[i] != -1)
 		i++;
+	if (i == 1)
+		return (123456789);
 	return (i);
 }
 
@@ -44,7 +46,8 @@ void		sort_tab(int **tab)
 		tmp = i + 1;
 		while (i < max)
 		{
-			tmp = (way_len(tab[i]) < way_len(tab[tmp])) ? i : tmp;
+			tmp = (way_len(tab[i]) < way_len(tab[tmp])) ?
+				i : tmp;
 			i++;
 		}
 		switch_tab(tab, place, tmp);

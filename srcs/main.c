@@ -24,12 +24,10 @@ int			main(int argc, char **argv)
 	if (!ret)
 		return (ft_printf("ERROR ON INPUT\n"));
 	e = fill_env(e, ret);
-	tree = map_tree_init(e);
-	ways = give_way(tree, e);
 	display_map(e);
-	sleep(1);
+	tree = map_tree_init(e);
 	display_link(tree, e);
-	//print_way(ways);
+	ways = give_way(tree, e);
 	sort_tab(ways);
 	print_way(ways);
 	return (0);

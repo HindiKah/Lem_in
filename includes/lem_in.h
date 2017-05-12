@@ -40,6 +40,7 @@ typedef struct		s_env
 	int				start;
 	int				end;
 	int				*pass;
+	t_node			*empty;
 	int				**tab;
 	char			***all_r;
 }					t_env;
@@ -68,6 +69,7 @@ int					give_last_tab(int *tab);
 int					way_len(int *tab);
 void				sort_tab(int **tab);
 void				switch_tab(int **tab, int a, int b);
+void				del_link(t_node **tree, int *tab, t_env *e);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);

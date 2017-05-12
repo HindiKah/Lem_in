@@ -52,6 +52,8 @@ t_env			*fill_env(t_env *e, char **map_str)
 	while (!ft_strchr(map_str[i], '-'))
 		i++;
 	e->tab = init_tab(e, map_str);
+	e->empty = (t_node*)malloc(sizeof(t_node));
+	e->empty->name = -1;
 	return (e);
 }
 

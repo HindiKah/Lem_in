@@ -15,7 +15,6 @@ t_node			**map_tree_init(t_env *e)
 	i = 0;
 	while (i < e->nb_room)
 	{
-		tree[i]->name = i;
 		tree[i] = link_node(tree[i], e, tree);
 		i++;
 	}

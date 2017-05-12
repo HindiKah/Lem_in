@@ -32,6 +32,9 @@ int			**give_way(t_node **tree, t_env *e)
 		ret[i][0] = e->start;
 		ret[i][1] = -1;
 		ret[i] = search_way(tree, &tmp, e, &ret[i]);
+		print_tab(ret[i]);
+		del_link(tree, ret[i], e);
+		display_link(tree, e);
 		if (!ret[i])
 			break;
 		i++;
@@ -61,7 +64,7 @@ int				*search_way(t_node **tree, t_node **start, t_env *e, int **ret)
 			add_end_tab(*ret, to_visit->name);
 			return (*ret);
 		}
-		else if (to_visit->passed != 1)
+		else if (to_visit->passed != 1  && to_visit->name != -1)
 		{
 			if (give_last_tab(*ret) != e->end)
 				add_end_tab(*ret, to_visit->name);
@@ -97,4 +100,33 @@ int				give_last_tab(int *tab)
 	else return (-1);
 }
 
+void			del_link(t_node **tree, int *tab, t_env *e)
+{
+	int i;
+	int j;
 
+	i = 0;
+	while (tab[i + 1] != -1)
+	{
+		j = 0;
+		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name != tab[i + 1])
+			j++;
+	ft_printf("while 1 -> del link%d->%d with i = %d && j = %d\n", tree[tab[i]]->name,  tree[tab[i]]->next[j]->name, tab[i + 1], j);
+	if (tree[tab[i]]->next[j])
+		tree[tab[i]]->next[j] = e->empty;
+		i++;
+	}
+	while (i > 0)
+	{
+		j = 0;
+		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name != tab[i - 1])
+			j++;
+	ft_printf("while 2 -> del link%d->%d with i = %d && j = %d\n", tree[tab[i]]->name,  tree[tab[i]]->next[j]->name, tab[i - 1], j);
+	if (!tree[tab[i]]->next[j])
+		ft_printf("CHOPE ERREUR");
+	if (tree[tab[i]]->next[j])
+		tree[tab[i]]->next[j] = e->empty;
+		i--;
+	}
+	ft_putstr("END\n");
+}
