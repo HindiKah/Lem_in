@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:03:15 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 19:52:25 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/15 11:15:14 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int			**give_way(t_node **tree, t_env *e)
 		ret[i][0] = e->start;
 		ret[i][1] = -1;
 		ret[i] = search_way(tree, &tmp, e, &ret[i]);
-		print_tab(ret[i]);
 		del_link(tree, ret[i], e);
-		display_link(tree, e);
 		if (!ret[i])
 			break;
 		i++;
@@ -111,7 +109,6 @@ void			del_link(t_node **tree, int *tab, t_env *e)
 		j = 0;
 		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name != tab[i + 1])
 			j++;
-	ft_printf("while 1 -> del link%d->%d with i = %d && j = %d\n", tree[tab[i]]->name,  tree[tab[i]]->next[j]->name, tab[i + 1], j);
 	if (tree[tab[i]]->next[j])
 		tree[tab[i]]->next[j] = e->empty;
 		i++;
@@ -121,12 +118,8 @@ void			del_link(t_node **tree, int *tab, t_env *e)
 		j = 0;
 		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name != tab[i - 1])
 			j++;
-	ft_printf("while 2 -> del link%d->%d with i = %d && j = %d\n", tree[tab[i]]->name,  tree[tab[i]]->next[j]->name, tab[i - 1], j);
-	if (!tree[tab[i]]->next[j])
-		ft_printf("CHOPE ERREUR");
 	if (tree[tab[i]]->next[j])
 		tree[tab[i]]->next[j] = e->empty;
 		i--;
 	}
-	ft_putstr("END\n");
 }

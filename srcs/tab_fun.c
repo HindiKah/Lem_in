@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 15:30:13 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 17:36:08 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/15 11:18:33 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ int			way_len(int *tab)
 	if (i == 1)
 		return (123456789);
 	return (i);
+}
+
+void		del_unseless(int **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i][0] != -666 && tab[i][1] != -1)
+		i++;
+	tab[i][0] = -666;
 }
 
 void		sort_tab(int **tab)
@@ -53,6 +63,7 @@ void		sort_tab(int **tab)
 		switch_tab(tab, place, tmp);
 		place++;
 	}
+	del_unseless(tab);
 }
 
 void		switch_tab(int **tab, int a, int b)

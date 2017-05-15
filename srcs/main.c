@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 19:53:46 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/15 14:00:33 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int			main(int argc, char **argv)
 	e = fill_env(e, ret);
 	display_map(e);
 	tree = map_tree_init(e);
-	display_link(tree, e);
+	//display_link(tree, e);
 	ways = give_way(tree, e);
 	sort_tab(ways);
-	print_way(ways);
+	//print_way(ways);
 	return (0);
 }
 void			display_link(t_node **tree, t_env *e)

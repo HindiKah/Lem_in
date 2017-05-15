@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 16:08:07 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/05/15 11:17:45 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int					way_len(int *tab);
 void				sort_tab(int **tab);
 void				switch_tab(int **tab, int a, int b);
 void				del_link(t_node **tree, int *tab, t_env *e);
+void				del_useless(int **tab);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);
