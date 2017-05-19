@@ -14,6 +14,7 @@
 # define LEM_IN_H
 # include "../libftprintf/includes/ft_printf.h"
 # include "../libftprintf/includes/libft.h"
+# define USAGE "usage: [-m] for multi [-mx] x maximum of way to use\n"
 
 typedef struct		s_node
 {
@@ -33,6 +34,9 @@ typedef struct		s_env
 	int				nb_room;
 	int				start;
 	int				end;
+	int				multi;
+	int				force_way_use;
+	int				nb_way_to_use;
 	int				*pass;
 	t_node			*empty;
 	int				**tab;

@@ -12,6 +12,21 @@
 
 #include "../includes/lem_in.h"
 void		display_map(t_env *e);
+int			analyse_ac(t_env *e, char *str)
+{
+	if (str[0] != '-' || str[1] != 'm')
+		return (ft_printf("%s", USAGE));
+	else
+		e->multi = 1;
+	if (str[2] && ft_atoi(str + 2) > 0)
+	{
+		e->force_way_use = 1;
+		e->nb_way_to_use = ft_atoi(str + 2);
+	}
+	else if (str[2])
+		return (ft_printf("%s", USAGE));
+	return (0);
+}
 
 int			main(int argc, char **argv)
 {
@@ -24,13 +39,16 @@ int			main(int argc, char **argv)
 	if (!ret)
 		return (ft_printf("ERROR ON INPUT\n"));
 	e = fill_env(e, ret);
-	display_map(e);
+	if (argc == 2)
+	{
+		if (analyse_ac(e, argv[1]) != 0)
+			return (0);
+	}
 	tree = map_tree_init(e);
-	//display_link(tree, e);
 	ways = give_way(tree, e);
 	sort_tab(ways);
 	print_way(ways, e);
-	ways[1][0] = -666;
+	display_map(e);
 	move_ant(e, ways, tree);
 	return (0);
 }
@@ -62,7 +80,8 @@ void		display_map(t_env *e)
 	i = 0;
 	ft_printf("\t\tMAP\n");
 	ft_printf("\n");
-	ft_printf("ant_n -> %d\nnb_room -> %d\nstart -> room n'%d'\nend -> room n'%d'\n\n", e->ant_n, e->nb_room, e->start, e->end);
+	ft_printf("ant_n -> %d\nnb_room -> %d\nstart -> room n'%d'\nend -> room n'%d'\n", e->ant_n, e->nb_room, e->start, e->end);
+	ft_printf("multi = %d, nb_way_to_use = %d e->way = %d\n\n", e->multi, e->nb_way_to_use, e->way);
 	while (i < e->nb_room)
 	{
 		ft_printf("room nb %d is called %s\n", ft_atoi(e->all_r[i][0]), e->all_r[i][1]);

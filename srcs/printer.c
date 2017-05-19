@@ -6,11 +6,13 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 	int		i;
 
 	end_ants = 0;
+	if (e->nb_way_to_use > count_neighbour(e, e->end))
+		e->nb_way_to_use = find_optiway(e, ways);
 	init_tree_ants(e, tree);
 	while (end_ants != e->ant_n)
 	{
 		i = 0;
-		while (i < 3)
+		while (i < e->nb_way_to_use)
 		{
 			move_next(ways[i], e, tree, i);
 			i++;
@@ -18,6 +20,15 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 		ft_printf("\n");
 		end_ants = tree[e->end]->nb_ant;
 	}
+}
+
+int				find_optiway(t_env *e, int **ways)
+{
+	int ret;
+
+	ret = 0;
+
+	return (ret);
 }
 
 void			move_next(int *way, t_env *e, t_node **tree, int way_n)
@@ -30,7 +41,6 @@ void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 	i--;
 	while (i - 1 >= 0)
 	{
-		//ft_printf("way[i] = room '%s' && his room name is %d\n", e->all_r[way[i]][1], tree[way[i]]->ant_name);
 			tree[way[i + 1]]->ant_name = tree[way[i]]->ant_name;
 		if (tree[way[i]]->ant_name != -1)
 		{

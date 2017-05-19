@@ -36,6 +36,10 @@ t_env			*init_env(t_env *e)
 	e->end = -1;
 	e->tab = NULL;
 	e->all_r = NULL;
+	e->force_way_use = 0;
+	e->nb_way_to_use = 1;
+	e->way = 0;
+	e->multi = 0;
 	return (e);
 }
 

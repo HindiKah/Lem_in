@@ -18,6 +18,7 @@ int				**init_tab(t_env *e, char **str)
 			return (NULL);
 		while (j < e->nb_room)
 			ret[i][j++] = 0;
+		ret[i][j] = -1;
 		i++;
 	}
 	ret = fill_tab(e, ret, str);

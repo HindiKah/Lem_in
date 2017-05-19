@@ -38,6 +38,7 @@ int			**give_way(t_node **tree, t_env *e)
 		i++;
 	}
 		ret[i] = (int*)malloc(sizeof(int));
+		e->way = i - 1;
 	ret[i][0] = -666;
 	return (ret);
 }
