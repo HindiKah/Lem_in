@@ -80,5 +80,6 @@ t_env			*init_room(t_env *e, char **map_str)
 			e = check_sharp(e, map_str + i, n_r);
 		i++;
 	}
+	e->all_r[j] = NULL;
 	return (e);
 }

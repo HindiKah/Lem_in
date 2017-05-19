@@ -19,16 +19,10 @@ typedef struct		s_node
 {
 	int				name;
 	int				passed;
-	int				ant;
-	int				depth;
+	int				ant_name;
+	int				nb_ant;
 	struct s_node	**next;
 }					t_node;
-
-typedef struct		s_way
-{
-	int				*way;
-	int				len;
-}					t_way;
 
 typedef struct		s_env
 {
@@ -44,6 +38,12 @@ typedef struct		s_env
 	int				**tab;
 	char			***all_r;
 }					t_env;
+
+typedef struct		s_ant
+{
+	int				name;
+	int				pos;
+}					t_ant;
 
 t_env				*fill_env(t_env *e, char **str);
 t_env				*init_env(t_env *env);
@@ -71,10 +71,13 @@ void				sort_tab(int **tab);
 void				switch_tab(int **tab, int a, int b);
 void				del_link(t_node **tree, int *tab, t_env *e);
 void				del_useless(int **tab);
+void				move_ant(t_env *e, int **ways, t_node **tree);
+void				move_next(int *way, t_env *e, t_node **tree, int way_n);
+void				init_tree_ants(t_env *e, t_node **tree);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);
-void				print_tab(int *tab);
+void				print_tab(int *tab, t_env *e);
 void				print_passed(t_node **tree, t_env *e);
-void				print_way(int **tab);
+void				print_way(int **tab, t_env *e);
 #endif

@@ -1,6 +1,6 @@
-1234
+10
 ##start
-a 2 3
+start 2 3
 b 3 4
 c 2 1
 d 2 3
@@ -14,19 +14,18 @@ E 6 7
 F 2 3
 G 3 4
 ##end
-h 2 3
-a-b
+end 2 3
+start-b
 b-c
 c-d
 d-e
 e-f
 f-g
-g-h
-a-B
+g-end
 B-C
 C-D
 D-E
 E-F
-F-h
-a-G
-G-h
+F-end
+start-G
+G-end

@@ -11,7 +11,7 @@ char			**init_this_room(char *str, int n_r)
 		return (NULL);
 	i = 0;
 	room[0] = ft_itoabase(n_r, 10);;
-	while (str[i] && str[i] != 32)
+	while (str[i] && str[i] > 32)
 		i++;
 	room[1] = (char*)malloc(sizeof(char) * (i + 2));
 	j = 0;

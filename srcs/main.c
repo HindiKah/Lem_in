@@ -29,7 +29,9 @@ int			main(int argc, char **argv)
 	//display_link(tree, e);
 	ways = give_way(tree, e);
 	sort_tab(ways);
-	//print_way(ways);
+	print_way(ways, e);
+	ways[1][0] = -666;
+	move_ant(e, ways, tree);
 	return (0);
 }
 void			display_link(t_node **tree, t_env *e)
@@ -85,7 +87,7 @@ void		display_map(t_env *e)
 		ft_printf("\n");
 }
 
-void			print_tab(int *tab)
+void			print_tab(int *tab, t_env *e)
 {
 	int i;
 
@@ -100,13 +102,20 @@ void			print_tab(int *tab)
 	ft_printf("%s", "           ");
 	while (tab[i] != -1)
 	{
+		ft_printf("%3s  ", e->all_r[tab[i]][1]);
+		i++;
+	}
+	i = 0;
+	ft_printf("%s", "\n           ");
+	while (tab[i] != -1)
+	{
 		ft_printf("%3d  ", tab[i]);
 		i++;
 	}
 	ft_printf("\n\n\n");
 }
 
-void			print_way(int **tab)
+void			print_way(int **tab, t_env *e)
 {
 	int i;
 
@@ -114,7 +123,7 @@ void			print_way(int **tab)
 	while (tab[i][0] > -1)
 	{
 		ft_printf("\n\nWAY[%d] ->> ", i);
-		print_tab(tab[i++]);
+		print_tab(tab[i++], e);
 	}
 }
 

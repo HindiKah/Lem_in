@@ -23,7 +23,8 @@ SRC_BASE=main.c\
 		 init_liaison.c\
 		 graph_init.c\
 		 way.c\
-		 tab_fun.c
+		 tab_fun.c\
+		 printer.c
 
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC_BASE))
 OBJS=$(addprefix $(SRC_DIR)/, $(SRC_BASE:.c=.o))
