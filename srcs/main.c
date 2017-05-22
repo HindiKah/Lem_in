@@ -118,7 +118,7 @@ void			print_tab(int *tab, t_env *e)
 	}
 	ft_printf("\n");*/
 	i = 0;
-	ft_printf("%s", "           ");
+	//ft_printf("%s", "           ");
 	while (tab[i] != -1)
 	{
 		ft_printf("%3s  ", e->all_r[tab[i]][1]);
