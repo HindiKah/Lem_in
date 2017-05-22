@@ -27,7 +27,9 @@ int				find_optiway(t_env *e, int **ways)
 	int ret;
 
 	ret = 0;
-
+	if (e->nb_way_to_use > e->way)
+		e->nb_way_to_use = e->way;
+	
 	return (ret);
 }
 
