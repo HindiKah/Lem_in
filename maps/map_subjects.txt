@@ -1,0 +1,26 @@
+30
+a 23 3
+b 16 7
+#commentaire
+c 16 3
+##start
+d 16 5
+e 9 3
+f 1 5
+g 4 8
+##end
+h 9 5
+##BITE
+h-d
+h-f
+a-c
+d-c
+e-b
+c-e
+#autre commentaire
+d-b
+b-a
+h-f
+h-b
+h-d
+f-e
