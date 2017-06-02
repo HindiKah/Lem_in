@@ -36,7 +36,7 @@ int				find_optiway(t_env *e, int **ways)
 		else
 			return (e->nb_way_to_use);
 	}
-	return (e->nb_way_to_use);
+	return (i);
 }
 
 void			move_next(int *way, t_env *e, t_node **tree, int way_n)

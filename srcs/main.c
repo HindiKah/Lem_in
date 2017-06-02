@@ -55,16 +55,16 @@ int			main(int argc, char **argv)
 	e = fill_env(e, ret);
 	if (!e || e->start == -1 || e->end == -1)
 		return (ft_printf("ERROR ON MAP\n"));
-	if (argc == 2)
-	{
-		if (analyse_ac(e, argv[1] + 1) != 0 && argv[1][0] == '-')
-			return (0);
-	}
 	tree = map_tree_init(e);
 	ways = give_way(tree, e);
 	if (e->way == 0)
 		return (ft_printf("NO WAY AVAIBLE\n"));
 	sort_tab(ways);
+	if (argc == 2)
+	{
+		if (analyse_ac(e, argv[1] + 1) != 0 && argv[1][0] == '-')
+			return (0);
+	}
 	e->nb_way_to_use = find_optiway(e, ways);
 	if (e->d_m)
 		display_map(e);
