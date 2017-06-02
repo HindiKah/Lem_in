@@ -24,7 +24,7 @@ int			analyse_ac(t_env *e, char *str)
 			if (str[i] == 'm')
 			{
 				e->multi = 1;
-				if (str[i + 1])
+				if (str[i + 1] && ft_atoi(str + i + 1) > 0)
 				{
 					e->force_way_use = 1;
 					e->nb_way_to_use = ft_atoi(str + i + 1);
@@ -139,7 +139,7 @@ void			print_way(int **tab, t_env *e)
 
 	i = 0;
 		ft_printf("\nWay(s) to use:");
-	while (i < e->nb_way_to_use)
+	while (i < e->nb_way_to_use && tab[i][0] != -666)
 	{
 		ft_printf("\n\n    WAY[%d] = [", i);
 		print_tab(tab[i++], e);
