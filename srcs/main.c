@@ -30,10 +30,9 @@ int			analyse_ac(t_env *e, char *str)
 					e->nb_way_to_use = ft_atoi(str + i + 1);
 				}
 			}
-			else if (str[i] == 'p')
-				e->p_w = 1;
-			else if (str[i] == 'd')
-				e->d_m = 1;
+				e->p_w = (str[i] == 'p') ? 1 : 0;
+				e->d_m = (str[i] == 'd') ? 1 : 0;
+				e->nb_iter = (str[i] == 'i') ? 1 : 0;
 			i++;
 		}
 		else
@@ -127,10 +126,10 @@ void			print_tab(int *tab, t_env *e)
 	i = 0;
 	while (tab[i + 1] != -1)
 	{
-		ft_printf("%s -> ", e->all_r[tab[i]][1]);
+		ft_printf("%d -> ", tab[i]);
 		i++;
 	}
-	ft_printf("%s", e->all_r[tab[i]][1]);
+	ft_printf("%d", tab[i]);
 }
 
 void			print_way(int **tab, t_env *e)

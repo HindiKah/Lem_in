@@ -14,9 +14,9 @@
 # define LEM_IN_H
 # include "../libftprintf/includes/ft_printf.h"
 # include "../libftprintf/includes/libft.h"
-# define USAGE "usage: [-m] for multi [-mx] x maximum of way to use -p to print the ways to use -d to display the map.info\n"
+# define USAGE "usage: [-m] for multi [-mx] x maximum of way to use -p to print the ways to use -d to display the map.info -i to know how many iter it takes\n"
 # define AUTHORIZE "1234567890#qwertyuioppasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
-# define AUSAGE "1234567890pdm"
+# define AUSAGE "1234567890pdmi"
 
 typedef struct		s_node
 {
@@ -45,6 +45,7 @@ typedef struct		s_env
 	char			***all_r;
 	int				d_m;
 	int				p_w;
+	int				nb_iter;
 }					t_env;
 
 typedef struct		s_ant

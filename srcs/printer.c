@@ -4,7 +4,9 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 {
 	int		end_ants;
 	int		i;
+	int		iter;
 
+	iter = 0;
 	end_ants = 0;
 	init_tree_ants(e, tree);
 	while (end_ants != e->ant_n)
@@ -17,7 +19,10 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 		}
 		ft_printf("\n");
 		end_ants = tree[e->end]->nb_ant;
+		iter++;
 	}
+	if (e->nb_iter == 1)
+		ft_printf("\nThere is %d itererations needed to complete the map\n", iter, e->nb_way_to_use);
 }
 
 int				find_optiway(t_env *e, int **ways)
@@ -27,6 +32,8 @@ int				find_optiway(t_env *e, int **ways)
 
 	ant = 0;
 	i = 0;
+	if (e->multi == 0)
+		return (1);
 	while (ways[i][0] != -666 && (ant += way_len(ways[i])) <= e->ant_n)
 		i++;
 	if (e->multi == 1 && e->force_way_use == 1)
@@ -63,6 +70,7 @@ void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 	{
 		ft_printf("L%d-%s ", tree[e->start]->ant_name, e->all_r[way[1]][1]);
 		tree[way[1]]->ant_name = tree[e->start]->ant_name;
+		tree[way[1]]->nb_ant++;
 		tree[e->start]->nb_ant--;
 		tree[e->start]->ant_name++;
 	}
