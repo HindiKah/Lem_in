@@ -6,7 +6,7 @@
 #    By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/19 18:35:20 by ybenoit           #+#    #+#              #
-#    Updated: 2017/05/11 15:54:10 by ybenoit          ###   ########.fr        #
+#    Updated: 2017/06/07 16:14:48 by ybenoit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_BASE=main.c\
 		 room_init.c\
 		 init_liaison.c\
 		 graph_init.c\
+		 graph_init2.c\
 		 way.c\
 		 tab_fun.c\
 		 printer.c\

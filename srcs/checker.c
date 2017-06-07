@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/07 14:14:40 by ybenoit           #+#    #+#             */
+/*   Updated: 2017/06/07 16:15:42 by ybenoit          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 int			check_nbant(char *line)
@@ -21,13 +33,12 @@ int			check_droom(char *line)
 	int i;
 	int ret;
 
-	i = 0;
+	i = 1;
 	ret = 0;
-	if (line[1] && line[0] == '#' && line [1] == '#')
+	if (line[1] && line[0] == '#' && line[1] == '#')
 		return (1);
-	while (line[i] && line[i] != ' ')
+	while (line[i] && line[i - 1] != ' ')
 		i++;
-	i++;
 	while (line[i] && line[i] != ' ')
 	{
 		if (!ft_isdigit(line[i]))

@@ -6,11 +6,12 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/15 14:00:33 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/07 16:36:17 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
 int			analyse_ac(t_env *e, char *str)
 {
 	int i;
@@ -38,6 +39,37 @@ int			analyse_ac(t_env *e, char *str)
 			return (ft_printf("%s", USAGE));
 	}
 	return (0);
+}
+
+void		secure_free(t_env *e, char **ret, t_node **tree, int **ways)
+{
+	int i;
+
+	i = 0;
+	while (ret[i])
+	{
+		free(ret[i]);
+		i++;
+	}
+	i = 0;
+	while (i < e->nb_room)
+	{
+		if (tree[i])
+			free(tree[i]);
+		i++;
+	}
+	if (tree)
+		free(tree);
+	i = 0;
+	while (i < e->way)
+	{
+		free(ways[i]);
+		i++;
+	}
+	if (e->tab)
+		free(e->tab);
+	if (e)
+		free(e);
 }
 
 int			main(int argc, char **argv)
@@ -69,26 +101,8 @@ int			main(int argc, char **argv)
 	if (e->p_w)
 		print_way(ways, e);
 	move_ant(e, ways, tree);
+	secure_free(e, ret, tree, ways);
 	return (0);
-}
-void			display_link(t_node **tree, t_env *e)
-{
-	int i;
-	i = 0;
-	int y = 0;
-	while (i < e->nb_room)
-	{
-		ft_printf("node[%d] is link whith ", i);
-		y = 0;
-		while (tree[i]->next[y])
-		{
-			ft_printf(" %d ", tree[i]->next[y]->name);
-			y++;
-		}
-		ft_printf("\n");
-		i++;
-	}
-	ft_printf("\n");
 }
 
 void		display_map(t_env *e)

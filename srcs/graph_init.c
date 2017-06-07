@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   graph_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/07 14:19:25 by ybenoit           #+#    #+#             */
+/*   Updated: 2017/06/07 14:19:46 by ybenoit          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 t_node			**map_tree_init(t_env *e)
@@ -25,7 +37,8 @@ t_node			*init_node(t_node *node, t_env *e, int n)
 {
 	node = (t_node*)malloc(sizeof(t_node));
 	node->name = n;
-	node->next = (t_node**)malloc(sizeof(t_node*) * (count_neighbour(e, n) + 1));
+	node->next = (t_node**)malloc(sizeof(t_node*) *
+			(count_neighbour(e, n) + 1));
 	node->passed = 0;
 	return (node);
 }
@@ -76,45 +89,4 @@ int				is_it_passed(int *tab, int node)
 		i++;
 	}
 	return (0);
-}
-
-int				count_neighbour(t_env *e, int node)
-{
-	int i;
-	int ret;
-
-	i = 0;
-	ret = 0;
-	while (i < e->nb_room)
-	{
-		if (e->tab[node][i])
-			ret++;
-		i++;
-	}
-	return (ret > 0 ? ret : -1);
-}
-
-int				*add_tab_value(int *tab, int n)
-{
-	int i;
-	int *ret;
-
-	i = 0;
-	while (tab[i] != -1)
-		i++;
-	ret = (int*)malloc(sizeof(int) * (i + 1));
-	if (!ret)
-		return NULL;
-	i = 0;
-	while (tab[i] != -1)
-	{
-		ret[i] = tab[i];
-		ft_printf("tab[%d] = %d\n", i, ret[i]);
-		i++;
-	}
-	ret[i++] = n;
-	ret[i] = -1;
-	free(tab);
-	tab = ret;
-	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:58:01 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/11 16:48:59 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/07 16:26:53 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				count_room(char **map_str)
 
 	i = 0;
 	ret = 0;
-	while (map_str[i] && !ft_strchr(map_str[i],'-'))
+	while (map_str[i] && !ft_strchr(map_str[i], '-'))
 	{
 		if (map_str[i][0] != '#')
 			ret++;
@@ -84,6 +84,8 @@ t_env			*init_room(t_env *e, char **map_str)
 	e->all_r = (char***)malloc(sizeof(char**) * e->nb_room);
 	while (map_str[i] && !ft_strchr(map_str[i], '-'))
 	{
+		if (!e)
+			return (NULL);
 		if (map_str[i][0] != '#' && ft_strchr(AUTHORIZE, map_str
 					[i][0]))
 		{
@@ -94,11 +96,7 @@ t_env			*init_room(t_env *e, char **map_str)
 			n_r++;
 		}
 		else if (map_str[i][0] == '#' && map_str[i][1] == '#')
-		{
 			e = check_sharp(e, map_str + i, n_r);
-			if (!e)
-				return (NULL);
-		}
 		else
 			return (NULL);
 		i++;
