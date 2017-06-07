@@ -6,12 +6,12 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 20:45:12 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/04/06 10:46:38 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/07 14:09:15 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # define ARG "DdiuUoOxXSscC%ZRp"
 # define NUM "1234567890"
 # define PREF "0#-+ "
@@ -29,49 +29,48 @@
 # include <wchar.h>
 # include "libft.h"
 
-typedef struct			s_arg
+typedef struct	s_arg
 {
-	int					argend;
-	char				type;
-	int					base;
-	int					sign;
-	int					value;
-	int					dot;
-	int					h;
-	int					hh;
-	int					l;
-	int					ll;
-	int					j;
-	int					z;
-	int					zero;
-	int					space;
-	int					sharp;
-	int					right;
-	int					more;
-	int					p;
-	int					p0;
-	int					p_end;
-	int					wlen;
-	int					str;
-	size_t				arg_len;
-	int					spec;
-	wchar_t				*wchar;
-	char				*ret;
-	int					res;
-}						t_arg;
+	int			argend;
+	char		type;
+	int			base;
+	int			sign;
+	int			value;
+	int			dot;
+	int			h;
+	int			hh;
+	int			l;
+	int			ll;
+	int			j;
+	int			z;
+	int			zero;
+	int			space;
+	int			sharp;
+	int			right;
+	int			more;
+	int			p;
+	int			p0;
+	int			p_end;
+	int			wlen;
+	int			str;
+	size_t		arg_len;
+	int			spec;
+	wchar_t		*wchar;
+	char		*ret;
+	int			res;
+}				t_arg;
 
-typedef struct			s_func
+typedef struct	s_func
 {
-	char				*type;
-	t_arg				(*f)(t_arg my_arg);
-}						t_func;
+	char		*type;
+	t_arg		(*f)(t_arg my_arg);
+}				t_func;
 
-typedef struct			s_funf
+typedef struct	s_funf
 {
-	char				*flag;
-	t_arg				(*f)(t_arg my_arg, va_list all_arg);
-}						t_funf;
-
+	char		*flag;
+	t_arg		(*f)(t_arg my_arg, va_list all_arg);
+}				t_funf;
 
 t_func			*ft_init_func(t_func *my_func);
 t_funf			*ft_init_funf(t_funf *my_funf);

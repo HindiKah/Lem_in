@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 17:49:04 by ybenoit           #+#    #+#             */
-/*   Updated: 2016/12/06 17:52:47 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/07 14:05:20 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		ft_putlong(long nb)
 {
-	int i;
-	int pw;
-	unsigned long n;
+	int				i;
+	int				pw;
+	unsigned long	n;
 
 	i = 0;
 	n = (nb < 0) ? (-nb) : nb;
