@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
-void		display_map(t_env *e);
 int			analyse_ac(t_env *e, char *str)
 {
 	int i;
@@ -30,9 +29,9 @@ int			analyse_ac(t_env *e, char *str)
 					e->nb_way_to_use = ft_atoi(str + i + 1);
 				}
 			}
-				e->p_w = (str[i] == 'p') ? 1 : 0;
-				e->d_m = (str[i] == 'd') ? 1 : 0;
-				e->nb_iter = (str[i] == 'i') ? 1 : 0;
+			e->p_w = (str[i] == 'p' || e->p_w) ? 1 : 0;
+			e->d_m = (str[i] == 'd' || e->d_m) ? 1 : 0;
+			e->nb_iter = (str[i] == 'i' || e->nb_iter) ? 1 : 0;
 			i++;
 		}
 		else
@@ -100,7 +99,7 @@ void		display_map(t_env *e)
 	i = 0;
 	ft_printf("\nMAP:\n");
 	ft_printf("\n");
-	ft_printf("    There is %d ants in an %d pieces home, they want to go from room nb'%d' to room nb'%d'\n\n", e->ant_n, e->nb_room, e->start, e->end);
+	ft_printf("    There is %d ants in an %d pieces home, they want to go from room '%s' to room '%s'\n\n", e->ant_n, e->nb_room, e->all_r[e->start][1], e->all_r[e->end][1]);
 	i = 0;
 	ft_printf("Ant_home Matrice:\n\n");
 	ft_printf("       ");
@@ -117,6 +116,7 @@ void		display_map(t_env *e)
 		ft_printf("\n");
 		i++;
 	}
+	ft_printf("\n");
 }
 
 void			print_tab(int *tab, t_env *e)
@@ -126,10 +126,10 @@ void			print_tab(int *tab, t_env *e)
 	i = 0;
 	while (tab[i + 1] != -1)
 	{
-		ft_printf("%d -> ", tab[i]);
+		ft_printf("%s -> ", e->all_r[tab[i]][1]);
 		i++;
 	}
-	ft_printf("%d", tab[i]);
+	ft_printf("%s", e->all_r[tab[i]][1]);
 }
 
 void			print_way(int **tab, t_env *e)
@@ -137,7 +137,7 @@ void			print_way(int **tab, t_env *e)
 	int i;
 
 	i = 0;
-		ft_printf("\nWay(s) to use:");
+	ft_printf("\nWay(s) to use:");
 	while (i < e->nb_way_to_use && tab[i][0] != -666)
 	{
 		ft_printf("\n\n    WAY[%d] = [", i);

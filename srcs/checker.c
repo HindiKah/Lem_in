@@ -11,6 +11,8 @@ int			check_nbant(char *line)
 			return (0);
 		i++;
 	}
+	if (ft_atoi(line) <= 0)
+		return (0);
 	return (1);
 }
 
@@ -51,6 +53,7 @@ int			check_liaison(char *str, t_env *e)
 	i = 0;
 	while (str[i] && str[i] != '-')
 		i++;
+	i++;
 	if (ret_nb_room(e, str) == -1 || ret_nb_room(e, str + i) == -1)
 		return (0);
 	else

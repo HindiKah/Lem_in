@@ -91,6 +91,7 @@ int					find_optiway(t_env *e, int **ways);
 
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);
+void				display_map(t_env *e);
 void				print_tab(int *tab, t_env *e);
 void				print_passed(t_node **tree, t_env *e);
 void				print_way(int **tab, t_env *e);
