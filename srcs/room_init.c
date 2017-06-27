@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   room_init.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/27 11:40:12 by ybenoit           #+#    #+#             */
+/*   Updated: 2017/06/27 11:41:02 by ybenoit          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 char			**init_this_room(char *str, int n_r)
 {
-	int i;
-	int j;
-	char **room;
+	int		i;
+	int		j;
+	char	**room;
 
 	room = (char**)malloc(sizeof(char*) * 2);
 	if (!room)
 		return (NULL);
 	i = 0;
-	room[0] = ft_itoabase(n_r, 10);;
+	room[0] = ft_itoabase(n_r, 10);
 	while (str[i] && str[i] > 32)
 		i++;
 	room[1] = (char*)malloc(sizeof(char) * (i + 2));

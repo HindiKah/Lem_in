@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printer.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/27 14:57:53 by ybenoit           #+#    #+#             */
+/*   Updated: 2017/06/27 15:05:17 by ybenoit          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
 void			move_ant(t_env *e, int **ways, t_node **tree)
@@ -22,7 +34,8 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 		iter++;
 	}
 	if (e->nb_iter == 1)
-		ft_printf("\nThere is %ld itererations needed to complete the map\n", iter, e->nb_way_to_use);
+		ft_printf("\nThere is %ld itererations needed to complete the map\n",
+				iter, e->nb_way_to_use);
 }
 
 int				find_optiway(t_env *e, int **ways)
@@ -56,10 +69,11 @@ void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 	i--;
 	while (i - 1 >= 0)
 	{
-			tree[way[i + 1]]->ant_name = tree[way[i]]->ant_name;
+		tree[way[i + 1]]->ant_name = tree[way[i]]->ant_name;
 		if (tree[way[i]]->ant_name != -1)
 		{
-			ft_printf("L%d-%s ", tree[way[i]]->ant_name, e->all_r[way[i + 1]][1]);
+			ft_printf("L%d-%s ",
+					tree[way[i]]->ant_name, e->all_r[way[i + 1]][1]);
 			tree[way[i + 1]]->nb_ant++;
 		}
 		i--;

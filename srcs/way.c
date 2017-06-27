@@ -6,16 +6,16 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:03:15 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/15 11:15:14 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/27 15:14:51 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
 
-int			**give_way(t_node **tree, t_env *e)
+int				**give_way(t_node **tree, t_env *e)
 {
 	int		**ret;
-	t_node	*tmp;;
+	t_node	*tmp;
 	int		i;
 	int		i_way;
 
@@ -34,10 +34,10 @@ int			**give_way(t_node **tree, t_env *e)
 		ret[i] = search_way(tree, &tmp, e, &ret[i]);
 		del_link(tree, ret[i], e);
 		if (!ret[i])
-			break;
+			break ;
 		i++;
 	}
-		ret[i] = (int*)malloc(sizeof(int));
+	ret[i] = (int*)malloc(sizeof(int));
 	ret[i][0] = -666;
 	return (ret);
 }
@@ -108,7 +108,8 @@ void			del_link(t_node **tree, int *tab, t_env *e)
 	while (tab[i + 1] != -1)
 	{
 		j = 0;
-		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name != tab[i + 1])
+		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name
+				!= tab[i + 1])
 			j++;
 	if (tree[tab[i]]->next[j])
 		tree[tab[i]]->next[j] = e->empty;
@@ -117,7 +118,8 @@ void			del_link(t_node **tree, int *tab, t_env *e)
 	while (i > 0)
 	{
 		j = 0;
-		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name != tab[i - 1])
+		while (tree[tab[i]]->next[j] && tree[tab[i]]->next[j]->name
+				!= tab[i - 1])
 			j++;
 	if (tree[tab[i]]->next[j])
 		tree[tab[i]]->next[j] = e->empty;

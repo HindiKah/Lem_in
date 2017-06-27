@@ -6,7 +6,7 @@
 /*   By: ybenoit <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 20:33:07 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/07 14:09:43 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/04/19 17:38:45 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
 typedef	struct		s_gnl
 {
 	int				fd;

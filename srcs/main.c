@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/07 16:36:17 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/27 15:03:34 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void		display_map(t_env *e)
 	i = 0;
 	ft_printf("\nMAP:\n");
 	ft_printf("\n");
-	ft_printf("    There is %d ants in an %d pieces home, they want to go from room '%s' to room '%s'\n\n", e->ant_n, e->nb_room, e->all_r[e->start][1], e->all_r[e->end][1]);
 	i = 0;
 	ft_printf("Ant_home Matrice:\n\n");
 	ft_printf("       ");

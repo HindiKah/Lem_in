@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 15:30:13 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/05/15 11:18:33 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/27 14:57:28 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,11 @@ void		sort_tab(int **tab)
 	int	place;
 	int max;
 
-	max = 2;
+	max = 0;
 	i = 0;
 	place = 0;
 	while (tab[place++][0] != -666)
 		max++;
-	max -= 2;
 	place = 0;
 	while (place + 1 < max)
 	{
