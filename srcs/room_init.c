@@ -22,7 +22,7 @@ char			**init_this_room(char *str, int n_r)
 	if (!room)
 		return (NULL);
 	i = 0;
-	room[0] = ft_itoabase(n_r, 10);
+	room[0] = (!n_r) ? ft_strdup("0") : ft_itoabase(n_r, 10);
 	while (str[i] && str[i] > 32)
 		i++;
 	room[1] = (char*)malloc(sizeof(char) * (i + 2));

@@ -49,6 +49,8 @@ int				find_optiway(t_env *e, int **ways)
 		return (1);
 	while (ways[i][0] != -666 && (ant += way_len(ways[i])) <= e->ant_n)
 		i++;
+	if (!i && e->way)
+		i = 1;
 	if (e->multi == 1 && e->force_way_use == 1)
 	{
 		if (e->nb_way_to_use > e->way)

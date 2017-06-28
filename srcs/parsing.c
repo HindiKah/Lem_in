@@ -63,7 +63,7 @@ t_env			*fill_env(t_env *e, char **map_str)
 		ft_putstr("DECLATION ROOM PROBLEM -> ");
 		return (NULL);
 	}
-	while (!ft_strchr(map_str[i], '-'))
+	while (map_str[i] && !ft_strchr(map_str[i], '-'))
 		i++;
 	e->tab = init_tab(e, map_str);
 	e->empty = (t_node*)malloc(sizeof(t_node));

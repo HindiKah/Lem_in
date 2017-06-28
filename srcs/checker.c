@@ -12,6 +12,25 @@
 
 #include "../includes/lem_in.h"
 
+static int	check_line(char *str)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	count = 0;
+	while (str[i] && str[i] != '-')
+		i++;
+	if ((str[i] && str[i] != '-') || !str[i])
+		return (0);
+	i++;
+	if (str[i] == '-')
+		return (0);
+	while (str[i])
+		i++;
+	return (1);
+}
+
 int			check_nbant(char *line)
 {
 	int i;
@@ -62,6 +81,8 @@ int			check_liaison(char *str, t_env *e)
 	int i;
 
 	i = 0;
+	if (!check_line(str))
+		return (0);
 	while (str[i] && str[i] != '-')
 		i++;
 	i++;
