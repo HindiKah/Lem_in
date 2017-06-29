@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/07 16:15:29 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/29 15:14:09 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int					check_nbant(char *line);
 int					check_droom(char *line);
 int					check_liaison(char *str, t_env *e);
 int					find_optiway(t_env *e, int **ways);
-
+int					analyse_ac(t_env *e, char *str);
 void				print_pass(int *tab);
 void				display_link(t_node **tree, t_env *e);
 void				display_map(t_env *e);

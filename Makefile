@@ -6,7 +6,7 @@
 #    By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/19 18:35:20 by ybenoit           #+#    #+#              #
-#    Updated: 2017/06/27 14:27:09 by ybenoit          ###   ########.fr        #
+#    Updated: 2017/06/29 15:10:38 by ybenoit          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC_BASE=main.c\
 		 way.c\
 		 tab_fun.c\
 		 printer.c\
-		 checker.c
+		 checker.c\
+		 option.c
 
 SRCS=$(addprefix $(SRC_DIR)/, $(SRC_BASE))
 OBJS=$(addprefix $(SRC_DIR)/, $(SRC_BASE:.c=.o))

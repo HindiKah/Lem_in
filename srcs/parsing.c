@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:58:01 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/27 14:55:48 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/29 13:27:14 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ t_env			*init_room(t_env *e, char **map_str)
 	{
 		if (!e)
 			return (NULL);
-		if (map_str[i][0] != '#' && ft_strchr(AUTHORIZE, map_str
-					[i][0]))
+		if (map_str[i][0] != '#' && ft_strchr(AUTHORIZE, map_str[i][0]))
 		{
 			if (!check_droom(map_str[i]))
 				return (NULL);

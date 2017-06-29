@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 14:57:53 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/27 15:05:17 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/29 15:20:12 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 		iter++;
 	}
 	if (e->nb_iter == 1)
-		ft_printf("\nThere is %ld itereration(s) needed to complete the map using %d way(s)\n",
-				iter, e->nb_way_to_use);
+	{
+		ft_printf("\nThere is %ld itereration(s) needed to ", iter);
+		ft_printf("complete the map using %d way(s)\n",
+				e->nb_way_to_use);
+	}
 }
 
 int				find_optiway(t_env *e, int **ways)
@@ -61,6 +64,18 @@ int				find_optiway(t_env *e, int **ways)
 	return (i);
 }
 
+static void		move_next_cut(t_node **tree, t_env *e, int i, int *way)
+{
+	tree[way[i + 1]]->ant_name = tree[way[i]]->ant_name;
+	if (tree[way[i]]->ant_name != -1)
+	{
+		ft_printf("L%d-%s ",
+				tree[way[i]]->ant_name,
+				e->all_r[way[i + 1]].name);
+		tree[way[i + 1]]->nb_ant++;
+	}
+}
+
 void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 {
 	int i;
@@ -71,14 +86,7 @@ void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 	i--;
 	while (i - 1 >= 0)
 	{
-		tree[way[i + 1]]->ant_name = tree[way[i]]->ant_name;
-		if (tree[way[i]]->ant_name != -1)
-		{
-			ft_printf("L%d-%s ",
-					tree[way[i]]->ant_name, 
-					e->all_r[way[i + 1]].name);
-			tree[way[i + 1]]->nb_ant++;
-		}
+		move_next_cut(tree, e, i, way);
 		i--;
 	}
 	if (tree[e->start]->nb_ant <= 0)

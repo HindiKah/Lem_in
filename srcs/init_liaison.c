@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 14:16:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/07 14:16:46 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/06/29 13:27:30 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int					ret_nb_room(t_env *e, char *str)
 	j = 0;
 	while (j < e->nb_room)
 	{
-		//printf("e->all_r[%d][1] = %s && str = %s\n", j, e->all_r[j][1], str);
 		i = 0;
 		while (str[i] && e->all_r[j].name[i] &&
 				str[i] == e->all_r[j].name[i])
