@@ -50,8 +50,9 @@ int				*search_way(t_node **tree, t_node **start, t_env *e, int **ret)
 	i = 0;
 	if (!start)
 		return (NULL);
-	if (search_node(tree, e, e->end)->passed == 1)
-		return (*ret);
+	//if (search_node(tree, e, e->end)->passed == 1)
+	//	return (*ret);
+	printf("current check %d\n", start[0]->name);
 	start[0]->passed = 1;
 	while (start[0]->next[i])
 	{

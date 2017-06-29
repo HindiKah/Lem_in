@@ -91,13 +91,12 @@ t_env			*init_room(t_env *e, char **map_str)
 		{
 			if (!check_droom(map_str[i]))
 				return (NULL);
-			e->all_r[j] = init_this_room(map_str[i], j);
+			init_this_room(map_str[i], j, &e->all_r[j]);
 			j++;
 		}
 		else if (map_str[i][0] == '#' && map_str[i][1] == '#')
 			e = check_sharp(e, map_str + i, j);
 		i++;
 	}
-	e->all_r[j] = NULL;
 	return (e);
 }

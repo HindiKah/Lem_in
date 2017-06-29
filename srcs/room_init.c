@@ -12,29 +12,27 @@
 
 #include "../includes/lem_in.h"
 
-char			**init_this_room(char *str, int n_r)
+t_room			*init_this_room(char *str, int n_r, t_room *room)
 {
 	int		i;
 	int		j;
-	char	**room;
 
-	room = (char**)malloc(sizeof(char*) * 2);
 	if (!room)
 		return (NULL);
 	i = 0;
-	room[0] = (!n_r) ? ft_strdup("0") : ft_itoabase(n_r, 10);
+	room->n_r = n_r;
 	while (str[i] && str[i] > 32)
 		i++;
-	room[1] = (char*)malloc(sizeof(char) * (i + 2));
+	room->name = (char*)malloc(sizeof(char) * (i + 2));
+	if (!room->name)
+		return (NULL);
 	j = 0;
 	while (j < i && str[j])
 	{
-		room[1][j] = str[j];
+		room->name[j] = str[j];
 		j++;
 	}
-	room[1][j] = '\0';
-	if (n_r == 0)
-		printf("room o is called %s\n", room[1]);
+	room->name[j] = '\0';
 	return (room);
 }
 

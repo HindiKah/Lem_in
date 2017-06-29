@@ -48,10 +48,12 @@ int					**fill_tab(t_env *e, int **tab, char **str)
 		i++;
 	while (str[i])
 	{
-		if (!check_liaison(str[i], e))
-			return (tab);
 		if (str[i][0] != '#' && ft_strchr(str[i], '-'))
+		{
+			if (!check_liaison(str[i], e))
+				return (tab);
 			init_this_liaison(e, tab, str[i]);
+		}
 		i++;
 	}
 	return (tab);
@@ -67,13 +69,13 @@ int					ret_nb_room(t_env *e, char *str)
 	{
 		//printf("e->all_r[%d][1] = %s && str = %s\n", j, e->all_r[j][1], str);
 		i = 0;
-		while (str[i] && e->all_r[j][1][i] &&
-				str[i] == e->all_r[j][1][i])
+		while (str[i] && e->all_r[j].name[i] &&
+				str[i] == e->all_r[j].name[i])
 			i++;
-		if (ft_strstr(e->all_r[j][1], str))
-			return (ft_atoi(e->all_r[j][0]));
+		if (ft_strstr(e->all_r[j].name, str))
+			return (e->all_r[j].n_r);
 		else if (str[i] == '-')
-			return (ft_atoi(e->all_r[j][0]));
+			return (e->all_r[j].n_r);
 		else
 			j++;
 	}

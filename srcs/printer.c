@@ -75,7 +75,8 @@ void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 		if (tree[way[i]]->ant_name != -1)
 		{
 			ft_printf("L%d-%s ",
-					tree[way[i]]->ant_name, e->all_r[way[i + 1]][1]);
+					tree[way[i]]->ant_name, 
+					e->all_r[way[i + 1]].name);
 			tree[way[i + 1]]->nb_ant++;
 		}
 		i--;
@@ -84,7 +85,8 @@ void			move_next(int *way, t_env *e, t_node **tree, int way_n)
 		tree[way[1]]->ant_name = -1;
 	if (tree[e->start]->nb_ant != 0)
 	{
-		ft_printf("L%d-%s ", tree[e->start]->ant_name, e->all_r[way[1]][1]);
+		ft_printf("L%d-%s ", tree[e->start]->ant_name,
+				e->all_r[way[1]].name);
 		tree[way[1]]->ant_name = tree[e->start]->ant_name;
 		tree[way[1]]->nb_ant++;
 		tree[e->start]->nb_ant--;
