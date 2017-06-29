@@ -34,7 +34,7 @@ void			move_ant(t_env *e, int **ways, t_node **tree)
 		iter++;
 	}
 	if (e->nb_iter == 1)
-		ft_printf("\nThere is %ld itererations needed to complete the map\n",
+		ft_printf("\nThere is %ld itereration(s) needed to complete the map using %d way(s)\n",
 				iter, e->nb_way_to_use);
 }
 
@@ -49,7 +49,7 @@ int				find_optiway(t_env *e, int **ways)
 		return (1);
 	while (ways[i][0] != -666 && (ant += way_len(ways[i])) <= e->ant_n)
 		i++;
-	if (!i && e->way)
+	if (i <= 0 && e->way)
 		i = 1;
 	if (e->multi == 1 && e->force_way_use == 1)
 	{

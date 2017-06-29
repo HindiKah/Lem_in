@@ -83,7 +83,15 @@ int			main(int argc, char **argv)
 	if (!ret)
 		return (ft_printf("ERROR ON INPUT\n"));
 	e = fill_env(e, ret);
-	if (!e || e->start == -1 || e->end == -1)
+/*
+int j = 0;
+while (e->all_r[j])
+{
+printf("e->>all_r[%d] = %s called %s\n", j, e->all_r[j][0], e->all_r[j][1]);
+j++;
+}
+*/
+	if (!e || e->start == -1 || e->end == -1 || e->start == e->end)
 		return (ft_printf("ERROR ON MAP\n"));
 	tree = map_tree_init(e);
 	ways = give_way(tree, e);

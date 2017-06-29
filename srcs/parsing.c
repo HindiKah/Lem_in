@@ -79,7 +79,9 @@ t_env			*init_room(t_env *e, char **map_str)
 	j = 0;
 	i = 0;
 	e->nb_room = count_room(map_str);
-	e->all_r = (char***)malloc(sizeof(char**) * e->nb_room);
+	e->all_r = (t_room*)malloc(sizeof(t_room) * e->nb_room);
+	if (!e->all_r)
+		return (NULL);
 	while (map_str[i] && !ft_strchr(map_str[i], '-'))
 	{
 		if (!e)

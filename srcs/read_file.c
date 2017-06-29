@@ -25,7 +25,7 @@ char		**save_file(char **ret)
 	while ((g = read(0, buff, 1)) > 0)
 	{
 		buff[1] = '\0';
-		if (s > 1000000 || buff[0] < 0)
+		if (s > 1000000)
 			return (NULL);
 		if (buff[0] == '\n')
 		{

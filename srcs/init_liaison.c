@@ -65,6 +65,7 @@ int					ret_nb_room(t_env *e, char *str)
 	j = 0;
 	while (j < e->nb_room)
 	{
+		//printf("e->all_r[%d][1] = %s && str = %s\n", j, e->all_r[j][1], str);
 		i = 0;
 		while (str[i] && e->all_r[j][1][i] &&
 				str[i] == e->all_r[j][1][i])

@@ -54,7 +54,7 @@ int			check_droom(char *line)
 
 	i = 1;
 	ret = 0;
-	if (line[1] && line[0] == '#' && line[1] == '#')
+	if (line[1] && line[0] == '#')
 		return (1);
 	while (line[i] && line[i - 1] != ' ')
 		i++;

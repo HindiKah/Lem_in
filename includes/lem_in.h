@@ -15,7 +15,7 @@
 # include "../libftprintf/includes/ft_printf.h"
 # include "../libftprintf/includes/libft.h"
 # define USAGE "usage: [-m] for multi [-mx] x maximum of way to use -p to print the ways to use -d to display the map.info -i to know how many iter it takes\n"
-# define AUTHORIZE "1234567890#qwertyuioppasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+# define AUTHORIZE "1234567890#qwertyuioppasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@$%^&*()_+='\"]\\}[{/?.>,<"
 # define AUSAGE "1234567890pdmi"
 
 typedef struct		s_node
@@ -26,6 +26,12 @@ typedef struct		s_node
 	int				nb_ant;
 	struct s_node	**next;
 }					t_node;
+
+typedef struct		s_room
+{
+	int				n_r;
+	char			*name;
+}					t_room;
 
 typedef struct		s_env
 {
@@ -42,7 +48,7 @@ typedef struct		s_env
 	int				*pass;
 	t_node			*empty;
 	int				**tab;
-	char			***all_r;
+	t_room			*all_r;
 	int				d_m;
 	int				p_w;
 	int				nb_iter;

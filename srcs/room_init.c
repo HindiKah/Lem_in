@@ -33,6 +33,8 @@ char			**init_this_room(char *str, int n_r)
 		j++;
 	}
 	room[1][j] = '\0';
+	if (n_r == 0)
+		printf("room o is called %s\n", room[1]);
 	return (room);
 }
 
@@ -43,7 +45,7 @@ t_env			*check_sharp(t_env *e, char **str, int n_r)
 	i = 0;
 	if (!str[1])
 		return (NULL);
-	while (str[i] && str[i][0] == '#' && str[i][1] == '#')
+	while (str[i] && str[i][0] == '#')
 		i++;
 	if (check_droom(str[i]))
 	{
