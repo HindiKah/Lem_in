@@ -35,5 +35,6 @@ char		**save_file(char **ret)
 		else
 			ret[s] = ft_strjoin_free(ret[s], ft_strdup(&buff[0]));
 	}
+	ret[s] = NULL;
 	return (ret);
 }

@@ -1,0 +1,228 @@
+==93863== Memcheck, a memory error detector
+==93863== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==93863== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==93863== Command: ./lem-in
+==93863== 
+--93863-- run: /usr/bin/dsymutil "./lem-in"
+==93863== Invalid write of size 4
+==93863==    at 0x1000013BE: init_tab (init_liaison.c:33)
+==93863==    by 0x100000D17: fill_env (parsing.c:68)
+==93863==    by 0x100000780: main (main.c:62)
+==93863==  Address 0x100b8a28c is 0 bytes after a block of size 44 alloc'd
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100001346: init_tab (init_liaison.c:28)
+==93863==    by 0x100000D17: fill_env (parsing.c:68)
+==93863==    by 0x100000780: main (main.c:62)
+==93863== 
+==93863== Conditional jump or move depends on uninitialised value(s)
+==93863==    at 0x100001AF1: count_neighbour (graph_init2.c:24)
+==93863==    by 0x1000018CA: init_node (graph_init.c:42)
+==93863==    by 0x100001804: map_tree_init (graph_init.c:24)
+==93863==    by 0x1000007DE: main (main.c:65)
+==93863== 
+==93863== Conditional jump or move depends on uninitialised value(s)
+==93863==    at 0x10000194D: link_node (graph_init.c:56)
+==93863==    by 0x10000184E: map_tree_init (graph_init.c:30)
+==93863==    by 0x1000007DE: main (main.c:65)
+==93863== 
+==93863== Conditional jump or move depends on uninitialised value(s)
+==93863==    at 0x100001AF1: count_neighbour (graph_init2.c:24)
+==93863==    by 0x100001C76: give_way (way.c:23)
+==93863==    by 0x1000007EF: main (main.c:66)
+==93863== 
+==93863== Conditional jump or move depends on uninitialised value(s)
+==93863==    at 0x1000008E4: lem_in (main.c:45)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Conditional jump or move depends on uninitialised value(s)
+==93863==    at 0x1000008FB: lem_in (main.c:47)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Invalid write of size 1
+==93863==    at 0x100007C24: ft_itoabase_uint (ft_itoabase_uint.c:43)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863==  Address 0x100b8b2e1 is 0 bytes after a block of size 1 alloc'd
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100007BAB: ft_itoabase_uint (ft_itoabase_uint.c:37)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Invalid read of size 1
+==93863==    at 0x100007718: ft_strlen (ft_strlen.c:20)
+==93863==    by 0x100007762: ft_strrev (ft_strrev.c:23)
+==93863==    by 0x100007C51: ft_itoabase_uint (ft_itoabase_uint.c:50)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863==  Address 0x100b8b2e1 is 0 bytes after a block of size 1 alloc'd
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100007BAB: ft_itoabase_uint (ft_itoabase_uint.c:37)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Invalid read of size 1
+==93863==    at 0x10000779D: ft_strrev (ft_strrev.c:26)
+==93863==    by 0x100007C51: ft_itoabase_uint (ft_itoabase_uint.c:50)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863==  Address 0x100b8b2e1 is 0 bytes after a block of size 1 alloc'd
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100007BAB: ft_itoabase_uint (ft_itoabase_uint.c:37)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Invalid read of size 1
+==93863==    at 0x100007718: ft_strlen (ft_strlen.c:20)
+==93863==    by 0x1000077CE: ft_strrev (ft_strrev.c:29)
+==93863==    by 0x100007C51: ft_itoabase_uint (ft_itoabase_uint.c:50)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863==  Address 0x100b8b2e1 is 0 bytes after a block of size 1 alloc'd
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100007BAB: ft_itoabase_uint (ft_itoabase_uint.c:37)
+==93863==    by 0x100005223: im_t (ft_flags.c:38)
+==93863==    by 0x100006381: ft_init_value (ft_parsing.c:22)
+==93863==    by 0x1000061C8: printer (ft_printf.c:64)
+==93863==    by 0x100006069: final_print (ft_printf.c:51)
+==93863==    by 0x100005E7C: ft_printf (ft_printf.c:30)
+==93863==    by 0x100002770: move_next (printer.c:96)
+==93863==    by 0x100002531: move_ant (printer.c:29)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Warning: client switching stacks?  SP change: 0x104899090 --> 0x4899090
+==93863==          to suppress, use: --max-stackframe=4294967296 or greater
+==93863== Warning: client switching stacks?  SP change: 0x4899090 --> 0x104899090
+==93863==          to suppress, use: --max-stackframe=4294967296 or greater
+==93863== Warning: client switching stacks?  SP change: 0x104899050 --> 0x4899050
+==93863==          to suppress, use: --max-stackframe=4294967296 or greater
+==93863==          further instances of this message will not be shown.
+==93863== Conditional jump or move depends on uninitialised value(s)
+==93863==    at 0x100002580: move_ant (printer.c:36)
+==93863==    by 0x10000091E: lem_in (main.c:49)
+==93863==    by 0x100000885: main (main.c:75)
+==93863== 
+==93863== Invalid read of size 8
+==93863==    at 0x10000095A: secure_free (main.c:20)
+==93863==    by 0x10000089A: main (main.c:76)
+==93863==  Address 0x10489a038 is 8 bytes before a block of size 80,000,000 alloc'd
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100000F78: save_file (read_file.c:23)
+==93863==    by 0x10000074E: main (main.c:59)
+==93863== 
+==93863== 
+==93863== HEAP SUMMARY:
+==93863==     in use at exit: 17,627 bytes in 246 blocks
+==93863==   total heap usage: 3,666 allocs, 3,420 frees, 80,173,981 bytes allocated
+==93863== 
+==93863== 1 bytes in 1 blocks are definitely lost in loss record 1 of 52
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100007674: ft_strdup (ft_strdup.c:20)
+==93863==    by 0x100000FF4: save_file (read_file.c:33)
+==93863==    by 0x10000074E: main (main.c:59)
+==93863== 
+==93863== 20 (16 direct, 4 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 52
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100001CB4: give_way (way.c:26)
+==93863==    by 0x1000007EF: main (main.c:66)
+==93863== 
+==93863== 72 bytes in 3 blocks are possibly lost in loss record 30 of 52
+==93863==    at 0x1000A4C7A: calloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x1005D089E: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==93863==    by 0x1005D05C1: map_2_images (in /usr/lib/libobjc.A.dylib)
+==93863==    by 0x100013F7B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==93863==    by 0x100014195: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==93863==    by 0x10020D1DC: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==93863==    by 0x1005D0073: _objc_init (in /usr/lib/libobjc.A.dylib)
+==93863==    by 0x10019FE49: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==93863==    by 0x10019FDF6: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==93863==    by 0x1000B2A01: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==93863==    by 0x10002475E: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==93863==    by 0x100024961: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==93863== 
+==93863== 75 bytes in 11 blocks are definitely lost in loss record 31 of 52
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100001100: init_this_room (room_init.c:26)
+==93863==    by 0x100000EBA: init_room (parsing.c:93)
+==93863==    by 0x100000C82: fill_env (parsing.c:60)
+==93863==    by 0x100000780: main (main.c:62)
+==93863== 
+==93863== 272 (248 direct, 24 indirect) bytes in 11 blocks are definitely lost in loss record 42 of 52
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x1000018DC: init_node (graph_init.c:41)
+==93863==    by 0x100001804: map_tree_init (graph_init.c:24)
+==93863==    by 0x1000007DE: main (main.c:65)
+==93863== 
+==93863== 428 bytes in 43 blocks are definitely lost in loss record 45 of 52
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100007A0F: ft_strjoin_free (ft_strjoin_free.c:34)
+==93863==    by 0x10000102A: save_file (read_file.c:36)
+==93863==    by 0x10000074E: main (main.c:59)
+==93863== 
+==93863== 484 bytes in 11 blocks are definitely lost in loss record 46 of 52
+==93863==    at 0x1000A4616: malloc (in /usr/local/Cellar/valgrind/3.13.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==93863==    by 0x100001346: init_tab (init_liaison.c:28)
+==93863==    by 0x100000D17: fill_env (parsing.c:68)
+==93863==    by 0x100000780: main (main.c:62)
+==93863== 
+==93863== LEAK SUMMARY:
+==93863==    definitely lost: 1,252 bytes in 78 blocks
+==93863==    indirectly lost: 28 bytes in 2 blocks
+==93863==      possibly lost: 72 bytes in 3 blocks
+==93863==    still reachable: 64 bytes in 2 blocks
+==93863==         suppressed: 16,211 bytes in 161 blocks
+==93863== Reachable blocks (those to which a pointer was found) are not shown.
+==93863== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==93863== 
+==93863== For counts of detected and suppressed errors, rerun with: -v
+==93863== Use --track-origins=yes to see where uninitialised values come from
+==93863== ERROR SUMMARY: 864 errors from 19 contexts (suppressed: 12 from 12)

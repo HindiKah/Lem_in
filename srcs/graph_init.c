@@ -30,6 +30,7 @@ t_node			**map_tree_init(t_env *e)
 		tree[i] = link_node(tree[i], e, tree);
 		i++;
 	}
+	tree[i] = NULL;
 	return (tree);
 }
 

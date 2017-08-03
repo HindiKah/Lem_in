@@ -12,31 +12,31 @@
 
 #include "../includes/lem_in.h"
 
-static void	secure_free(t_env *e, char **ret, t_node **tree, int **ways)
+static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 {
 	int i;
 
 	i = -1;
-	while (ret[i])
-		free(ret[i++]);
+	while (ret[0][i])
+		free(ret[0][i++]);
+	free(*ret);
 	i = 0;
-	while (i < e->nb_room)
+	while (i < e[0]->nb_room)
 	{
-		if (tree[i])
-			free(tree[i++]);
-	}
-	if (tree)
-		free(tree);
-	i = 0;
-	while (i < e->way)
-	{
-		free(ways[i]);
+		free(tree[0][i]);
 		i++;
 	}
-	if (e->tab)
-		free(e->tab);
-	if (e)
-		free(e);
+	free(tree[0]);
+	i = 0;
+	while (i < e[0]->way)
+	{
+		free(ways[0][i]);
+		i++;
+	}
+	free(e[0]->all_r);
+	free(e[0]->tab);
+	if (*e)
+		free(*e);
 }
 
 static void	lem_in(t_env *e, char **ret, t_node **tree, int **ways)
@@ -47,7 +47,6 @@ static void	lem_in(t_env *e, char **ret, t_node **tree, int **ways)
 	if (e->p_w)
 		print_way(ways, e);
 	move_ant(e, ways, tree);
-	secure_free(e, ret, tree, ways);
 }
 
 int			main(int argc, char **argv)
@@ -74,5 +73,6 @@ int			main(int argc, char **argv)
 			return (0);
 	}
 	lem_in(e, ret, tree, ways);
+	secure_free(&e, &ret, &tree, &ways);
 	return (0);
 }
