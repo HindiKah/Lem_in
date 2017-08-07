@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 14:14:40 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/07 16:15:42 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/08/07 11:28:12 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			check_droom(char *line)
 		i++;
 	while (line[i] && line[i] != ' ')
 	{
-		if (!ft_isdigit(line[i]))
+		if (!ft_isdigit(line[i]) || line[0] == 'L')
 			return (0);
 		if (line[i + 1] && line[i + 1] == ' ')
 			ret++;
@@ -79,13 +79,20 @@ int			check_droom(char *line)
 int			check_liaison(char *str, t_env *e)
 {
 	int i;
+	int y;
 
+	y = 0;
 	i = 0;
 	if (!check_line(str))
 		return (0);
 	while (str[i] && str[i] != '-')
 		i++;
 	i++;
+	y = i;
+	while (str[y] && str[y] != '-')
+		y++;
+	if (str[y])
+		return (0);
 	if (ret_nb_room(e, str) == -1 || ret_nb_room(e, str + i) == -1)
 		return (0);
 	else

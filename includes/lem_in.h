@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/29 15:14:09 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/08/07 11:42:51 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define LEM_IN_H
 # include "../libftprintf/includes/ft_printf.h"
 # include "../libftprintf/includes/libft.h"
-# define USAGE "usage: [-m] for multi [-mx] x maximum of way to use -p to print the ways to use -d to display the map.info -i to know how many iter it takes\n"
-# define AUTHORIZE "1234567890#qwertyuioppasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@$%^&*()_+='\"]\\}[{/?.>,<"
+# define USAGE "usage: [-m[x]ipd] multi/info/print_ways(s)/display_map\n"
 # define AUSAGE "1234567890pdmi"
 
 typedef struct		s_node
@@ -78,8 +77,9 @@ int					*add_tab_value(int *tab, int n);
 t_node				*init_node(t_node *node, t_env *e, int n);
 t_node				*link_node(t_node *node, t_env *e, t_node **tree);
 t_node				*search_node(t_node **node, t_env *e, int n);
-int					*search_way(t_node **tree, t_node **start, t_env *e, int **ret);
-int					*add_end_tab(int *ret, int n);
+int					*search_way(t_node **tree, t_node **start, t_env *e,
+					int **ret);
+int					*add_end_tab(int *ret, int n, int end, t_env *e);
 int					**give_way(t_node **tree, t_env *e);
 int					give_last_tab(int *tab);
 int					way_len(int *tab);

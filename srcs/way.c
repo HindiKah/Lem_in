@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:03:15 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/29 15:23:59 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/08/07 11:43:25 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,24 @@ int				*search_way(t_node **tree, t_node **start, t_env *e, int **ret)
 		if (to_visit->name == e->end && to_visit->passed != 1 && (e->way++))
 		{
 			to_visit->passed = 1;
-			add_end_tab(*ret, to_visit->name);
+			add_end_tab(*ret, to_visit->name, 1, e);
 			return (*ret);
 		}
 		else if (to_visit->passed != 1 && to_visit->name != -1)
 		{
-			if (give_last_tab(*ret) != e->end)
-				add_end_tab(*ret, to_visit->name);
+			add_end_tab(*ret, to_visit->name, 2, e);
 			search_way(tree, &to_visit, e, ret);
 		}
 	}
 	return (*ret);
 }
 
-int				*add_end_tab(int *ret, int n)
+int				*add_end_tab(int *ret, int n, int end, t_env *e)
 {
 	int		i;
 
+	if (end == 2 && give_last_tab(ret) == e->end)
+		return (ret);
 	i = 0;
 	while (ret[i] != -1)
 		i++;

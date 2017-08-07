@@ -6,11 +6,20 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 14:16:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/29 13:27:30 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/08/07 11:28:28 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/lem_in.h"
+
+static int			check_sh(char *str)
+{
+	if (!ft_strcmp(str, "##start") || !ft_strcmp(str, "##end") ||
+			ft_strlen(str) < 3)
+		return (0);
+	else
+		return (1);
+}
 
 int					**init_tab(t_env *e, char **str)
 {
@@ -48,6 +57,8 @@ int					**fill_tab(t_env *e, int **tab, char **str)
 		i++;
 	while (str[i])
 	{
+		if (!check_sh(str[i]))
+			return (tab);
 		if (str[i][0] != '#' && ft_strchr(str[i], '-'))
 		{
 			if (!check_liaison(str[i], e))

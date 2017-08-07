@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 11:40:12 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/27 11:41:02 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/08/07 11:30:55 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,12 @@ t_env			*check_sharp(t_env *e, char **str, int n_r)
 		i++;
 	if (check_droom(str[i]))
 	{
-		if (ft_strstr("##end", str[0]))
-		{
-			if (e->end == -1)
-				e->end = n_r;
-			else
-				return (NULL);
-		}
-		else if (ft_strstr("##start", str[0]))
-		{
-			if (e->start == -1)
-				e->start = n_r;
-			else
-				return (NULL);
-		}
+		if (!ft_strcmp("##end", str[0]))
+			e->end = (e->end == -1) ? n_r : -2;
+		else if (!ft_strcmp("##start", str[0]))
+			e->start = (e->start == -1) ? n_r : -2;
+		if (e->start == -2 || e->end == -2)
+			return (NULL);
 		return (e);
 	}
 	else
