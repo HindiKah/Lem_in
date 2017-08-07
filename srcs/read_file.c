@@ -25,7 +25,7 @@ char		**save_file(char **ret)
 	while ((g = read(0, buff, 1)) > 0)
 	{
 		buff[1] = '\0';
-		if (s > 1000000)
+		if (s > 100000000 || buff[0] == 1)
 			return (NULL);
 		if (buff[0] == '\n')
 		{
@@ -36,5 +36,5 @@ char		**save_file(char **ret)
 			ret[s] = ft_strjoin_free(ret[s], ft_strdup(&buff[0]));
 	}
 	ret[s] = NULL;
-	return (ret);
+	return (s == 0 ? NULL : ret);
 }
