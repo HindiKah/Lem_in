@@ -59,10 +59,11 @@ typedef struct		s_ant
 	int				pos;
 }					t_ant;
 
+int					check_exist_room(char *str, t_env *e, int j);
 t_env				*fill_env(t_env *e, char **str);
 t_env				*init_env(t_env *env);
 t_env				*init_room(t_env *e, char **str);
-t_room				*init_this_room(char *str, int n_r, t_room *room);
+t_room				*init_this_room(char *str, int n_r, t_room *r, t_env *e);
 int					**init_tab(t_env *e, char **str);
 int					**fill_tab(t_env *e, int **tab, char **str);
 int					**init_this_liaison(t_env *e, int **tab, char *str);

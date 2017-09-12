@@ -12,13 +12,13 @@
 
 #include "../includes/lem_in.h"
 
-t_room			*init_this_room(char *str, int n_r, t_room *room)
+t_room			*init_this_room(char *str, int n_r, t_room *room, t_env *e)
 {
 	int		i;
 	int		j;
 
-	if (!room)
-		return (NULL);
+	if (!room || !check_exist_room(str, e, n_r))
+		exit(ft_printf("Error: duplicate room\n"));
 	i = 0;
 	room->n_r = n_r;
 	while (str[i] && str[i] > 32)

@@ -16,10 +16,6 @@ static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 {
 	int i;
 
-	i = -1;
-	while (ret[0][i])
-		free(ret[0][i++]);
-	free(*ret);
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
@@ -39,8 +35,24 @@ static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 		free(*e);
 }
 
+static void		print_file(char **file)
+{
+	char **tmp;
+
+	tmp = file;
+	while (*tmp)
+	{
+		ft_printf("%s\n", *tmp);
+		free(*tmp);
+		tmp++;
+	}
+	free(file);
+	ft_printf("\n");
+}
+
 static void	lem_in(t_env *e, char **ret, t_node **tree, int **ways)
 {
+	print_file(ret);
 	e->nb_way_to_use = find_optiway(e, ways);
 	if (e->d_m)
 		display_map(e);
@@ -58,14 +70,14 @@ int			main(int argc, char **argv)
 
 	ret = save_file(ret);
 	if (!ret)
-		return (ft_printf("ERROR ON INPUT\n"));
+		return (ft_printf("error on input\n"));
 	e = fill_env(e, ret);
 	if (!e || e->start == -1 || e->end == -1 || e->start == e->end)
-		return (ft_printf("ERROR ON MAP\n"));
+		return (ft_printf("error on map\n"));
 	tree = map_tree_init(e);
 	ways = give_way(tree, e);
 	if (e->way == 0)
-		return (ft_printf("NO WAY AVAIBLE\n"));
+		return (ft_printf("no way avaible\n"));
 	sort_tab(ways);
 	if (argc == 2)
 	{

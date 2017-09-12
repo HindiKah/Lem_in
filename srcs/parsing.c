@@ -53,14 +53,14 @@ t_env			*fill_env(t_env *e, char **map_str)
 		i++;
 	if (!check_nbant(map_str[i]))
 	{
-		ft_putstr("NB_ANT INCORRECT -> ");
+		ft_putstr("error : number of ant incorrect -> ");
 		return (NULL);
 	}
 	e->ant_n = ft_atoi(map_str[i++]);
 	e = init_room(e, map_str + i);
 	if (!e)
 	{
-		ft_putstr("DECLATION ROOM PROBLEM -> ");
+		ft_putstr("error : declaration room failed -> ");
 		return (NULL);
 	}
 	while (map_str[i] && !ft_strchr(map_str[i], '-'))
@@ -69,6 +69,20 @@ t_env			*fill_env(t_env *e, char **map_str)
 	e->empty = (t_node*)malloc(sizeof(t_node));
 	e->empty->name = -1;
 	return (e);
+}
+
+int			check_exist_room(char *line, t_env *e, int j)
+{
+	int i;
+
+	i = 0;
+	while (i < j)
+	{
+		if (!ft_strcmp(ft_strsub(line, 0, ft_strlen_c(line, ' ')), e->all_r[i].name))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 t_env			*init_room(t_env *e, char **map_str)
@@ -90,7 +104,7 @@ t_env			*init_room(t_env *e, char **map_str)
 		{
 			if (!check_droom(map_str[i]))
 				return (NULL);
-			init_this_room(map_str[i], j, &e->all_r[j]);
+			init_this_room(map_str[i], j, &e->all_r[j], e);
 			j++;
 		}
 		else if (map_str[i][0] == '#' && map_str[i][1] == '#')

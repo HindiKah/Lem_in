@@ -35,8 +35,6 @@ OBJS=$(addprefix $(SRC_DIR)/, $(SRC_BASE:.c=.o))
 C_NO="\033[00m"
 C_OK="\033[32m"
 C_GOOD="\033[32m"
-C_ERROR="\033[31m"
-C_WARN="\033[33m"
 
 SUCCESS=$(C_GOOD)SUCCESS$(C_NO)
 OK=$(C_OK)OK$(C_NO)
@@ -44,14 +42,14 @@ OK=$(C_OK)OK$(C_NO)
 all: $(NAME)
 
 $(NAME): libftprintf42 $(OBJS)
-		$(CC) -o $(NAME) $(OBJS) libftprintf/libftprintf.a
+		@$(CC) -o $(NAME) $(OBJS) libftprintf/libftprintf.a
 		@echo "Compiling" [ $(NAME) ] $(SUCCESS)
 
 %.o: %.c $(INCLUDES)/libft.h $(INCLUDES)/ft_printf.h
 		@$(CC) -c -o $@ $< libftprintf/libftprintf.a -I $(INCLUDES)
 
 libftprintf42:
-			make -C ./libftprintf
+		@make -C ./libftprintf
 
 clean:
 		@rm -f $(OBJS)
