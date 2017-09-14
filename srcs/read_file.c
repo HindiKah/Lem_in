@@ -28,12 +28,13 @@ char		**save_file(char **ret)
 		if (s > 100000000 || buff[0] == 1)
 			return (NULL);
 		if (buff[0] == '\n')
-		{
 			s++;
-			ret[s] = ft_strdup("");
-		}
 		else
+		{
+			if (!ret[s])
+				ret[s] = ft_strnew(1);
 			ret[s] = ft_strjoin_free(ret[s], ft_strdup(&buff[0]));
+		}
 	}
 	ret[s] = NULL;
 	return (s == 0 ? NULL : ret);

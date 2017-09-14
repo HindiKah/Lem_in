@@ -15,14 +15,21 @@
 static void	secure_free2(t_env **e, char ***ret, t_node ***tree, int ***ways)
 {
 	int i = 0;
-
-	while (i < e[0]->nb_room)
+	
+	while (i < count_neighbour(e[0], e[0]->end) + 1)
 	{
-		free(e[0]->all_r[i].name);
+		free(ways[0][i]);
 		i++;
 	}
-	free(e[0]->all_r);
+	free(ways[0]);
 	free(e[0]->empty);
+	i = 0;
+	while (i < e[0]->nb_room)
+	{
+		free(tree[0][i]->next);
+		free(tree[0][i]);
+		i++;
+	}
 }
 
 static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
@@ -32,17 +39,11 @@ static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
-		free(tree[0][i]->next);
-		free(tree[0][i]);
+		free(e[0]->all_r[i].name);
 		i++;
 	}
+	free(e[0]->all_r);
 	free(tree[0]);
-	i = 0;
-	while (i < e[0]->way + 1)
-	{
-		free(ways[0][i]);
-		i++;
-	}
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
@@ -50,7 +51,8 @@ static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 		i++;
 	}
 	free(e[0]->tab);
-	secure_free2(e, ret, tree, ways);
+	if (tree[0] && ways[0])
+		secure_free2(e, ret, tree, ways);
 	if (*e)
 		free(*e);
 }
@@ -101,7 +103,7 @@ int			main(int argc, char **argv)
 		return (ft_printf("Error: bad input\n"));
 	e = fill_env(e, ret);
 	if (!e || e->start == -1 || e->end == -1 || e->start == e->end)
-			error_code(e, ret, tree, ways);
+			error_code(e, ret, NULL, NULL);
 	tree = map_tree_init(e);
 	ways = give_way(tree, e);
 	if (e->way == 0)
