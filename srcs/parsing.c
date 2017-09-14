@@ -78,7 +78,7 @@ int			check_exist_room(char *line, t_env *e, int j)
 	i = 0;
 	while (i < j)
 	{
-		if (!ft_strcmp(ft_strsub(line, 0, ft_strlen_c(line, ' ')), e->all_r[i].name))
+		if (!ft_strncmp(line, e->all_r[i].name, ft_strlen_c(line, ' ')))
 			return (0);
 		i++;
 	}

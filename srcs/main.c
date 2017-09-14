@@ -12,6 +12,19 @@
 
 #include "../includes/lem_in.h"
 
+static void	secure_free2(t_env **e, char ***ret, t_node ***tree, int ***ways)
+{
+	int i = 0;
+
+	while (i < e[0]->nb_room)
+	{
+		free(e[0]->all_r[i].name);
+		i++;
+	}
+	free(e[0]->all_r);
+	free(e[0]->empty);
+}
+
 static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 {
 	int i;
@@ -19,18 +32,25 @@ static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
+		free(tree[0][i]->next);
 		free(tree[0][i]);
 		i++;
 	}
 	free(tree[0]);
 	i = 0;
-	while (i < e[0]->way)
+	while (i < e[0]->way + 1)
 	{
 		free(ways[0][i]);
 		i++;
 	}
-	free(e[0]->all_r);
+	i = 0;
+	while (i < e[0]->nb_room)
+	{
+		free(e[0]->tab[i]);
+		i++;
+	}
 	free(e[0]->tab);
+	secure_free2(e, ret, tree, ways);
 	if (*e)
 		free(*e);
 }
@@ -61,6 +81,14 @@ static void	lem_in(t_env *e, char **ret, t_node **tree, int **ways)
 	move_ant(e, ways, tree);
 }
 
+void		error_code(t_env *e, char **ret, t_node **tree
+		, int **ways)
+{
+	printf("Error\n");
+	secure_free(&e, &ret, &tree, &ways);
+	exit(0);
+}
+
 int			main(int argc, char **argv)
 {
 	t_env	*e;
@@ -70,19 +98,20 @@ int			main(int argc, char **argv)
 
 	ret = save_file(ret);
 	if (!ret)
-		return (ft_printf("error on input\n"));
+		return (ft_printf("Error: bad input\n"));
 	e = fill_env(e, ret);
 	if (!e || e->start == -1 || e->end == -1 || e->start == e->end)
-		return (ft_printf("error on map\n"));
+			error_code(e, ret, tree, ways);
 	tree = map_tree_init(e);
 	ways = give_way(tree, e);
 	if (e->way == 0)
-		return (ft_printf("no way avaible\n"));
+			error_code(e, ret, tree, ways);
 	sort_tab(ways);
 	if (argc == 2)
 	{
-		if (analyse_ac(e, argv[1] + 1) != 0 && argv[1][0] == '-')
-			return (0);
+		if ((analyse_ac(e, argv[1] + 1) != 0 && argv[1][0] == '-')
+				|| e->error_code)
+			error_code(e, ret, tree, ways);
 	}
 	lem_in(e, ret, tree, ways);
 	secure_free(&e, &ret, &tree, &ways);

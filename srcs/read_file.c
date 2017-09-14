@@ -21,7 +21,7 @@ char		**save_file(char **ret)
 	g = 0;
 	s = 0;
 	ret = (char**)malloc(sizeof(char*) * 10000000);
-	ret[s] = ft_strdup("");
+	ret[s] = ft_strnew(2);
 	while ((g = read(0, buff, 1)) > 0)
 	{
 		buff[1] = '\0';

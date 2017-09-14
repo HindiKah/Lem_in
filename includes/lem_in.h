@@ -51,6 +51,7 @@ typedef struct		s_env
 	int				d_m;
 	int				p_w;
 	int				nb_iter;
+	int				error_code;
 }					t_env;
 
 typedef struct		s_ant
@@ -102,4 +103,5 @@ void				display_map(t_env *e);
 void				print_tab(int *tab, t_env *e);
 void				print_passed(t_node **tree, t_env *e);
 void				print_way(int **tab, t_env *e);
+void				error_code(t_env *e, char **ret, t_node **tree, int **ways);
 #endif
