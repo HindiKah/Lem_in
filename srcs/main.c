@@ -15,8 +15,8 @@
 static void	secure_free2(t_env **e, char ***ret, t_node ***tree, int ***ways)
 {
 	int i = 0;
-	
-	while (i < count_neighbour(e[0], e[0]->end) + 1)
+
+	while (i < e[0]->way + 1)
 	{
 		free(ways[0][i]);
 		i++;
@@ -26,7 +26,6 @@ static void	secure_free2(t_env **e, char ***ret, t_node ***tree, int ***ways)
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
-		free(tree[0][i]->next);
 		free(tree[0][i]);
 		i++;
 	}
