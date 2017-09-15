@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:41:00 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/08/07 11:42:51 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/09/15 11:01:58 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,8 @@ void				display_map(t_env *e);
 void				print_tab(int *tab, t_env *e);
 void				print_passed(t_node **tree, t_env *e);
 void				print_way(int **tab, t_env *e);
-void				error_code(t_env *e, char **ret, t_node **tree, int **ways);
+void				error_code(t_env *e, char **ret, t_node **tree
+						, int **ways);
+void				secure_free(t_env **e, char ***ret, t_node ***tree
+						, int ***ways);
 #endif

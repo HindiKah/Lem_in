@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:58:01 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/08/07 11:26:00 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/09/15 11:04:15 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_env			*fill_env(t_env *e, char **map_str)
 	return (e);
 }
 
-int			check_exist_room(char *line, t_env *e, int j)
+int				check_exist_room(char *line, t_env *e, int j)
 {
 	int i;
 
