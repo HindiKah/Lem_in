@@ -6,7 +6,7 @@
 /*   By: ybenoit <ybenoit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/19 18:31:44 by ybenoit           #+#    #+#             */
-/*   Updated: 2017/06/29 15:19:42 by ybenoit          ###   ########.fr       */
+/*   Updated: 2017/09/15 10:18:44 by ybenoit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ static void	secure_free2(t_env **e, char ***ret, t_node ***tree, int ***ways)
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
+		free(tree[0][i]->next);
 		free(tree[0][i]);
 		i++;
 	}
+	free(tree[0]);
 }
 
 static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
@@ -42,7 +44,6 @@ static void	secure_free(t_env **e, char ***ret, t_node ***tree, int ***ways)
 		i++;
 	}
 	free(e[0]->all_r);
-	free(tree[0]);
 	i = 0;
 	while (i < e[0]->nb_room)
 	{
