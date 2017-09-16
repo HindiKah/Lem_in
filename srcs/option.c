@@ -51,7 +51,7 @@ void		display_map(t_env *e)
 	ft_printf("\n");
 	i = 0;
 	ft_printf("Ant_home Matrice:\n\n");
-	ft_printf("       ");
+	ft_printf("      ");
 	while (i < e->nb_room)
 		ft_printf("%-6s", e->all_r[i++].name);
 	i = 0;
@@ -59,7 +59,7 @@ void		display_map(t_env *e)
 	while (i < e->nb_room)
 	{
 		j = 0;
-		ft_printf("       %-6s", e->all_r[i].name);
+		ft_printf("%-6s", e->all_r[i].name);
 		while (j < e->nb_room)
 			ft_printf("%-6d", e->tab[i][j++]);
 		ft_printf("\n");
